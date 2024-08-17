@@ -1,0 +1,22 @@
+[
+  {
+    "advantageValue": "60%",
+    "advantageDescription": "de aumento nos lucros",
+    "hasBorder": true
+  },
+  {
+    "advantageValue": "300+",
+    "advantageDescription": "empresas precisam nós",
+    "hasBorder": true
+  },
+  {
+    "advantageValue": "200+",
+    "advantageDescription": "horas economizadas p/mês",
+    "hasBorder": true
+  },
+  {
+    "advantageValue": "93%",
+    "advantageDescription": "de satisfação dos clientes",
+    "hasBorder": false
+  }
+]
