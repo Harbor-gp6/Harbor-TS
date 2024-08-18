@@ -1,6 +1,6 @@
 import { Heading } from '../../../components/Heading/Heading'
 import { Container } from '@mui/material'
-import advantagesInfos from '../../../assets/advantagesInfos.json'
+import advantagesInfos from '@/../assets/advantagesInfos.json'
 import { Typography } from '../../../components/Typography/Typography'
 
 
