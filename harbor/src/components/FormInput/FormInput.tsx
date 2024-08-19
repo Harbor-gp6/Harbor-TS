@@ -3,7 +3,7 @@ type InputType = 'email' | 'text' | 'number' | 'password'
 
 type FormInputProps = {
   value?: string
-  onChange?: () => void
+  onChange?: (value: any) => void
   name?: string
   className?: ClassValue | ClassArray
   type?: InputType
