@@ -21,7 +21,7 @@ export function FaqSection() {
                 <h1 className="text-3xl lg:text-5xl text-gray-500">FAQ</h1>
             </div>
             <div>
-                {perguntas.map((pergunta, index) => <FaqAccordion key={index} pergunta={pergunta} reposta={respostas[index]} />)}
+                {perguntas.map((pergunta, index) => <FaqAccordion key={index} pergunta={pergunta} resposta={respostas[index]} />)}
             </div>
         </Container>
     )
