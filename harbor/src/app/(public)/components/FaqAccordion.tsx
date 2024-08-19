@@ -1,7 +1,13 @@
-/* eslint-disable react/prop-types */
+'use client'
+
 import { Accordion } from "flowbite-react";
 
-export function FaqAccordion({ pergunta, reposta }) {
+type FaqAccordionProps = {
+    pergunta: string
+    resposta: string
+}
+
+export function FaqAccordion({ pergunta, resposta }: FaqAccordionProps) {
     return (
         <>
             <Accordion collapseAll>
@@ -10,7 +16,7 @@ export function FaqAccordion({ pergunta, reposta }) {
                         <p>{pergunta}</p>
                     </Accordion.Title>
                     <Accordion.Content className="text-gray-600">
-                        <p>{reposta}</p>
+                        <p>{resposta}</p>
                     </Accordion.Content>
                 </Accordion.Panel>
             </Accordion>

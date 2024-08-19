@@ -1,9 +1,11 @@
 import type { Config } from 'tailwindcss';
 import colors from 'tailwindcss/colors';
+import * as flowbite from 'flowbite-react/tailwind';
 
 const config: Config = {
   content: [
     './src/**/*.{js,ts,jsx,tsx}',
+    flowbite.content(),
 
     // Path to Tremor module
     './node_modules/@tremor/**/*.{js,ts,jsx,tsx}',
@@ -13,6 +15,10 @@ const config: Config = {
     current: 'currentColor',
     extend: {
       colors: {
+        'blue': "#2920F5",
+        'blueEnd': "#7373FF",
+        'body': "#838383",
+        'lightGray': '#D9D9D9',
         // light mode
         tremor: {
           brand: {
@@ -130,7 +136,7 @@ const config: Config = {
         /^(fill-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
     },
   ],
-  plugins: [require('@headlessui/tailwindcss'), require('@tailwindcss/forms')],
+  plugins: [require('@headlessui/tailwindcss'), require('@tailwindcss/forms'), flowbite.plugin()],
 };
 
 export default config;
