@@ -9,12 +9,12 @@ import Image from 'next/image'
 export default function Login() {
   return (
     <div className='w-screen min-h-screen bg-gradient-to-b from-transparent to-white flex items-center justify-center relative'>
-      <Image 
+      <Image
         src="/images/graphs/grafismos.svg"
         alt="Grafismos"
-        className='absolute top-0 z-0'
-        height={ 500 }
-        width={ 550 }
+        className='absolute top-0 z-0 w-full'
+        height={1000}
+        width={1000}
       />
 
       <Container maxWidth="md" className="flex flex-col gap-4 z-10">
@@ -35,7 +35,7 @@ export default function Login() {
           </Typography>
         </div>
         <LoginForm />
-        
+
       </Container>
     </div>
   )
