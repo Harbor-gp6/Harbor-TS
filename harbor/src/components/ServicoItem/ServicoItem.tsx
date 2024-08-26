@@ -6,7 +6,7 @@ type ServicoItemProps = {
     description: string
     price: string
     selectedEmployee: string
-    onChangePage: () => void
+    onChangePage: any
     onSelectService: () => void
     serviceList: any[]
     totalValue: string
@@ -15,7 +15,7 @@ type ServicoItemProps = {
     surnameValue: string
     cpfValue: string
     phoneValue: string
-    onChange: () => void
+    onChange: any
     emailValue: string
     onSubmit: () => void
     dateValue: string
