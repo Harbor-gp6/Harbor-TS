@@ -17,8 +17,8 @@ export default function Header() {
                 src="/images/logos/harborLogo.svg"
                 alt="Logo da harbor"
                 className='h-10'
-                height={40}
-                width={40}
+                height={150}
+                width={150}
               />
             </Link>
           </div>
