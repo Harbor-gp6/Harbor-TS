@@ -6,8 +6,14 @@ import { Button } from "flowbite-react";
 import { useFormik } from "formik";
 import * as yup from 'yup'
 import axios from 'axios'
+import { useAuthentication } from '@/hooks/useAuthentication'
+import { useAuth } from '@/contexts/auth-context'
+import { useRouter } from 'next/navigation'
 
 export function LoginForm() {
+   const { login } = useAuth()
+   const router = useRouter()
+
     const formik = useFormik({
         initialValues: {
           email: '',
@@ -17,51 +23,60 @@ export function LoginForm() {
           email: yup.string().email('Insira um E-mail válido').required('Insira um E-mail'),
           password: yup.string().min(8,'A senha deve ter no mínimo 8 caracteres').required('Insira sua senha')
         }),
-        onSubmit: (values: { email: string, password: string}, { resetForm }) => {
-          axios.post('http://localhost:8080/usuarios/login', {
-            email: values.email,
-            senha: values.password
-          }).then(() => {
-            alert("Login realizado com sucesso")
-            window.location.href = "/dashboard/4"
-          }).catch((err) => {
-            alert(`Houve um erro: ${err}`)
-          })
-          resetForm()
+        onSubmit: async (values: { email: string, password: string}, { resetForm }) => {
+          const { email, password } = values
+
+          try {
+            const user = await login(email, password)
+
+            if (user) {
+              console.log('user', user)
+              console.log('valores', values)
+              if (user.status === 200) {
+                alert('login Realizado')
+                router.push('/')
+                resetForm()
+              } else if (user.status === 404) {
+                alert('E-mail e/ou senha incorretos')
+                resetForm()
+              } else {
+                alert('Não foi possivel realizar o login, tente novamente mais tarde.')
+              }
+            }
+          } catch (error: any) {
+            throw new Error('Erro durante o Login', error)
+          }
         }
       })
-      
+
     return (
         <form onSubmit={formik.handleSubmit}>
           <div className='flex flex-col gap-4'>
-            <div className='flex flex-col gap-2'>
-              <Typography>
-                Email:
-              </Typography>
+            <div className='flex flex-col gap-4'>
               <FormInput
                 placeholder="Insira seu email"
                 type='email'
                 name='email'
                 onChange={formik.handleChange}
                 value={formik.values.email}
+                className="text-black"
               />
               {formik.touched.email && formik.errors.email && (
-                <Typography color="red-500">
+                <Typography color="primary">
                   {formik.errors.email}
                 </Typography>
               )}
-              <Typography>
-                Senha:
-              </Typography>
+
               <FormInput
                 placeholder="Insira sua senha"
                 type='password'
                 name='password'
                 onChange={formik.handleChange}
                 value={formik.values.password}
+                className="text-black"
               />
               {formik.touched.password && formik.errors.password && (
-                <Typography color="red-500">
+                <Typography color="primary">
                   {formik.errors.password}
                 </Typography>
               )}
