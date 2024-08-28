@@ -66,7 +66,7 @@ export default function Register() {
                 value={formik.values.name}
               />
               {formik.touched.name && formik.errors.name && (
-                <Typography color="red-500">
+                <Typography color="warning">
                   {formik.errors.name}
                 </Typography>
               )}
@@ -81,7 +81,7 @@ export default function Register() {
                 value={formik.values.surname}
               />
               {formik.touched.surname && formik.errors.surname && (
-                <Typography color="red-500">
+                <Typography color="warning">
                   {formik.errors.surname}
                 </Typography>
               )}
@@ -96,7 +96,7 @@ export default function Register() {
                 value={formik.values.email}
               />
               {formik.touched.email && formik.errors.email && (
-                <Typography color="red-500">
+                <Typography color="warning">
                   {formik.errors.email}
                 </Typography>
               )}
@@ -111,7 +111,7 @@ export default function Register() {
                 value={formik.values.phone}
               />
               {formik.touched.phone && formik.errors.phone && (
-                <Typography color="red-500">
+                <Typography color="warning">
                   {formik.errors.phone}
                 </Typography>
               )}

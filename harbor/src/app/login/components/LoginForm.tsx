@@ -5,8 +5,6 @@ import { Typography } from "@/components/Typography/Typography";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
 import * as yup from 'yup'
-import axios from 'axios'
-import { useAuthentication } from '@/hooks/useAuthentication'
 import { useAuth } from '@/contexts/auth-context'
 import { useRouter } from 'next/navigation'
 

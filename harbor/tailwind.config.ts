@@ -19,6 +19,7 @@ const config: Config = {
         'blueEnd': "#7373FF",
         'body': "#838383",
         'lightGray': '#D9D9D9',
+        'warning': '#EB2424',
         // light mode
         tremor: {
           brand: {
