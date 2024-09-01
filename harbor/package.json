@@ -28,6 +28,7 @@
     "react-dom": "^18",
     "react-google-charts": "^4.0.1",
     "react-wavify": "^1.11.1",
+    "sweetalert2": "^11.12.4",
     "yup": "^1.4.0"
   },
   "devDependencies": {
