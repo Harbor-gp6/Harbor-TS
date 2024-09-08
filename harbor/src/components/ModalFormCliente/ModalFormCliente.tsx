@@ -10,8 +10,8 @@ type ModalFormClienteProps = {
   open: boolean
   onClose: () => void
   totalTime: string | number
-  totalValue: string
-  onBack: () => void
+  totalValue: number
+  // onBack: () => void
   nameValue: string
   surnameValue: string
   cpfValue: string
@@ -22,7 +22,7 @@ type ModalFormClienteProps = {
   paymentValue: string
 }
 
-export function ModalFormCliente({ open, onClose, totalTime, totalValue, onBack, nameValue, surnameValue, cpfValue, phoneValue, emailValue, onChange, onSubmit, paymentValue} : ModalFormClienteProps) {
+export function ModalFormCliente({ open, onClose, totalTime, totalValue, nameValue, surnameValue, cpfValue, phoneValue, emailValue, onChange, onSubmit, paymentValue} : ModalFormClienteProps) {
   const [openModal, setOpenModal] = useState(false);
 
   return (
@@ -68,8 +68,8 @@ export function ModalFormCliente({ open, onClose, totalTime, totalValue, onBack,
 
         </FlowbiteModal.Body>
         <FlowbiteModal.Footer className="w-full flex flex-col text-left">
-            <Typography className="w-full ml-2" color='black' textPosition="left" textSize= "base"> Total: {totalValue}</Typography>
-            <Typography className="w-full ml-8" color='black' textPosition="left" textSize= "base"> Tempo médio: {totalTime} min</Typography>
+            <Typography className="w-full ml-2" color='black' textPosition="left" textSize= "base"> Total: {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(totalValue)}</Typography>
+            <Typography className="w-full ml-8" color='black' textPosition="left" textSize= "base"> Tempo médio: {totalTime || 0} min</Typography>
             <div className="flex justify-between gap-2 w-full">
               <Typography className="w-full" color='black' textPosition="left" textSize= "base"> Forma de pagamento:</Typography>
               <div className="w-full flex flex-col justify-center">
@@ -83,13 +83,10 @@ export function ModalFormCliente({ open, onClose, totalTime, totalValue, onBack,
               </div>
             </div>
             <div className='flex flex-col lg:flex-row gap-4'>
-              <Button className="w-full mt-4" onClick={() => {
-                onBack()
-              }}>
+              <Button className="w-full mt-4" onClick={onClose}>
                 Voltar
               </Button>
               <Button className="w-full mt-4" onClick={() => {
-                onClose()
                 onSubmit()
               }}>
                 Agendar
