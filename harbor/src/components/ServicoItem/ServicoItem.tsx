@@ -1,5 +1,6 @@
 import { Typography } from "../Typography/Typography"
 import { ModalHorarios } from "../ModalHorarios/ModalHorarios"
+import { PrestadorListagemDto } from '@/types/prestador/PrestadorListagemDto'
 
 type ServicoItemProps = {
     title: string
@@ -8,9 +9,10 @@ type ServicoItemProps = {
     selectedEmployee: string
     onChangePage: any
     onSelectService: () => void
+    onSelectEmployee: (value: any) => void
     serviceList: any[]
     totalValue: string
-    totalTime: string
+    totalTime: number
     nameValue: string
     surnameValue: string
     cpfValue: string
@@ -21,9 +23,32 @@ type ServicoItemProps = {
     dateValue: string
     timeValue: string
     paymentValue: string
+    employees: PrestadorListagemDto[]
 }
 
-export function ServicoItem({ title, description, price, selectedEmployee, onChangePage, onSelectService, serviceList, totalValue, totalTime, nameValue, surnameValue, cpfValue, phoneValue, onChange, emailValue, onSubmit, dateValue, timeValue, paymentValue }: ServicoItemProps) {
+export function ServicoItem({
+    title,
+    description,
+    price,
+    selectedEmployee,
+    onChangePage,
+    onSelectService,
+    onSelectEmployee,
+    serviceList,
+    totalValue,
+    totalTime,
+    nameValue,
+    surnameValue,
+    cpfValue,
+    phoneValue,
+    onChange,
+    emailValue,
+    onSubmit,
+    dateValue,
+    timeValue,
+    paymentValue,
+    employees
+}: ServicoItemProps) {
     return (
         <div className="filial-item bg-gray-300 h-auto block p-3 w-full sm:flex mb-3">
             <div className="flex flex-col justify-between text-start w-full ">
@@ -53,6 +78,8 @@ export function ServicoItem({ title, description, price, selectedEmployee, onCha
                     onSubmit={onSubmit}
                     dateValue={dateValue}
                     timeValue={timeValue}
+                    employees={employees}
+                    onSelectEmployee={onSelectEmployee}
                 />
             </div>
 

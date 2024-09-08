@@ -15,7 +15,7 @@ export function ServicoCard({ servico, preco, horario, barbeiro, data, onChangeE
       <div className="flex justify-between">
         <Typography color='black' className='font-base' textPosition="left" textSize="base"> {servico} </Typography>
         <div>
-          <Typography color='black' className='font-base' textPosition="end" textSize="base"> R${preco} </Typography>
+          <Typography color='black' className='font-base' textPosition="left" textSize="base"> {preco} </Typography>
         </div>
       </div>
       <div className="flex justify-between items-center">
