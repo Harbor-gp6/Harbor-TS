@@ -1,8 +1,9 @@
+import { PedidoServicoListagemDto } from '@/types/pedido/PedidoServicoListagemDto'
 import axios from 'axios'
 
 type ServiceCardProps = {
-  id: string
-  service: string
+  id: number
+  service: string[]
   provider: string
   time: string
   client: string

@@ -16,6 +16,10 @@ type ProviderCardProps = {
   imgSrc: string
 }
 
+type InternSideNavProps = {
+  id: string | number
+}
+
 const ProviderCard = ({ name, lastName, role, imgSrc }: ProviderCardProps) => (
   <div className="p-4 bg-gray-800 rounded-lg shadow-lg text-white transition-transform transform hover:scale-105">
     <div className="flex justify-between items-center">
@@ -39,7 +43,8 @@ const ProviderCard = ({ name, lastName, role, imgSrc }: ProviderCardProps) => (
   </div>
 )
 
-export function InternSideNav() {
+export function InternSideNav(props: InternSideNavProps) {
+  const { id } = props
   const pathname = usePathname()
   const splitedPathname = pathname.split("/")
   const employeeId = Number(splitedPathname[2])
@@ -199,10 +204,10 @@ export function InternSideNav() {
         <div className='flex flex-col h-full'>
           <Sidebar.Items className='h-full'>
             <Sidebar.ItemGroup className='h-full'>
-              <Sidebar.Item href="#" icon={HiChartPie} className="hover:bg-gray-700 hover:text-white">
+              <Sidebar.Item href={`/dashboard/${id}`} icon={HiChartPie} className="hover:bg-gray-700 hover:text-white">
                 Dashboard
               </Sidebar.Item>
-              <Sidebar.Item href="#" icon={HiViewBoards} onClick={handleModalOpen2} className="hover:bg-gray-700 hover:text-white">
+              <Sidebar.Item href={`/dashboard/${id}/pedidos`} icon={HiViewBoards} className="hover:bg-gray-700 hover:text-white">
                 Agenda
               </Sidebar.Item>
               <Sidebar.Item href="#" icon={HiInbox} onClick={handleModalOpen} className="hover:bg-gray-700 hover:text-white">

@@ -8,10 +8,11 @@ import { SignInResult } from '@/types/SignInResult'
 
 type DashboardLayoutProps = {
   children: ReactNode
+  id: string | number
 }
 
 export async function DashboardLayout(props: DashboardLayoutProps) {
-  const { children } = props
+  const { children, id } = props
 
   const userCookies = cookies()
   const userInfos = userCookies.get('user')
@@ -28,7 +29,7 @@ export async function DashboardLayout(props: DashboardLayoutProps) {
         userRole={employee.cargo}
       />
       <div className='w-screen min-h-screen flex overflow-x-hidden justify-between'>
-        <InternSideNav />
+        <InternSideNav id={id} />
 
         {children}
       </div>

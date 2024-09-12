@@ -3,13 +3,17 @@ import { ReactNode } from 'react'
 
 type DashboardPageLayoutProps = {
   children: ReactNode
+  params: {
+    id: string
+  }
 }
 
 export default function DashboardPageLayout (props: DashboardPageLayoutProps) {
   const { children } = props
+  const id = props.params.id
 
   return (
-    <DashboardLayout>
+    <DashboardLayout id={id}>
       {children}
     </DashboardLayout>
   )

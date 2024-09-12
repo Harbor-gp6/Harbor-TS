@@ -1,22 +1,23 @@
 'use client'
 
 import { Chart } from "react-google-charts";
+import { ComboChart } from '../ComboChart/ComboChart'
 
 export const dataPagamento = [
-  ["Mês/Ano", "Débito", "Crédito", "Dinheiro", "Pix", "Total de Vendas"],
-  ["01/2024", 1200, 800, 500, 700, 3200],
-  ["02/2024", 1100, 750, 450, 680, 2980],
-  ["03/2024", 1250, 820, 520, 730, 3320],
-  ["04/2024", 1300, 790, 480, 710, 3280],
-  ["05/2024", 1400, 860, 530, 760, 3550],
-  ["06/2024", 1350, 830, 500, 740, 3420],
-  ["07/2024", 1450, 870, 550, 780, 3650],
-  ["08/2024", 1500, 900, 580, 800, 3780],
-  ["09/2024", 1550, 920, 600, 820, 3890],
-  ["10/2024", 1600, 950, 620, 840, 4010],
-  ["11/2024", 1650, 980, 640, 860, 4130],
-  ["12/2024", 1700, 1000, 660, 880, 4240],
-];
+  { mesAno: "01/2024", debito: 1200, credito: 800, dinheiro: 500, pix: 700, totalVendas: 3200 },
+  { mesAno: "02/2024", debito: 1100, credito: 750, dinheiro: 450, pix: 680, totalVendas: 2980 },
+  { mesAno: "03/2024", debito: 1250, credito: 820, dinheiro: 520, pix: 730, totalVendas: 3320 },
+  { mesAno: "04/2024", debito: 1300, credito: 790, dinheiro: 480, pix: 710, totalVendas: 3280 },
+  { mesAno: "05/2024", debito: 1400, credito: 860, dinheiro: 530, pix: 760, totalVendas: 3550 },
+  { mesAno: "06/2024", debito: 1350, credito: 830, dinheiro: 500, pix: 740, totalVendas: 3420 },
+  { mesAno: "07/2024", debito: 1450, credito: 870, dinheiro: 550, pix: 780, totalVendas: 3650 },
+  { mesAno: "08/2024", debito: 1500, credito: 900, dinheiro: 580, pix: 800, totalVendas: 3780 },
+  { mesAno: "09/2024", debito: 1550, credito: 920, dinheiro: 600, pix: 820, totalVendas: 3890 },
+  { mesAno: "10/2024", debito: 1600, credito: 950, dinheiro: 620, pix: 840, totalVendas: 4010 },
+  { mesAno: "11/2024", debito: 1650, credito: 980, dinheiro: 640, pix: 860, totalVendas: 4130 },
+  { mesAno: "12/2024", debito: 1700, credito: 1000, dinheiro: 660, pix: 880, totalVendas: 4240 }
+]
+
 
 export const optionsPagamento = {
   title: "Receita por Forma de Pagamento (2024)",
@@ -31,13 +32,24 @@ export function PieChartCustom() {
   return (
     <div className="w-full h-full flex flex-col sm:flex justify-start items-start">
       <div className="w-full">
-        <Chart
-          chartType="ComboChart"
-          width="100%"
-          height="400px"
-          data={dataPagamento}
-          options={optionsPagamento}
-        />
+        <ComboChart
+        data={dataPagamento}
+        className='h-[400px] w-full'
+        index="mesAno"
+        enableBiaxial={true}
+        barSeries={{
+          categories: ["debito", "credito", "dinheiro", "pix"],
+          yAxisLabel: "Formas de pagamento",
+          colors: ['blue', 'lime', 'pink', 'emerald']
+        }}
+        lineSeries={{
+          categories: ["totalVendas"],
+          showYAxis: true,
+          yAxisLabel: "Total de vendas",
+          colors: ["gray"],
+        }}
+      />
+
       </div>
     </div>
   );
