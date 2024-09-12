@@ -1,3 +1,5 @@
+'use client'
+
 import { format } from 'date-fns'
 import { Button, Timeline } from "flowbite-react"
 import { HiArrowNarrowRight, HiCalendar } from "react-icons/hi"

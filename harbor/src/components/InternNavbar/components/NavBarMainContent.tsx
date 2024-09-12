@@ -1,5 +1,9 @@
+'use client'
+
+import { useAuth } from '@/contexts/auth-context'
 import { format } from 'date-fns'
 import { Avatar, Dropdown, Modal, Navbar } from 'flowbite-react'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 type NavBarMainContentProps = {
@@ -14,6 +18,8 @@ export function NavBarMainContent({ enterpriseName, userName, userSurname, userE
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
+  const { logout } = useAuth()
+  const router = useRouter()
 
   const handleModalOpen = () => {
     setIsModalOpen(true)
@@ -54,7 +60,14 @@ export function NavBarMainContent({ enterpriseName, userName, userSurname, userE
             <Dropdown.Item onClick={handleModalOpen}>Relatórios</Dropdown.Item>
             <Dropdown.Item>Prestadores</Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item>Sair</Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => {
+                logout()
+                router.push('/')
+              }}
+            >
+              Sair
+            </Dropdown.Item>
           </Dropdown>
           <div className="hidden md:flex flex-col">
             <span className="block text-sm font-medium text-gray-800">{userName} {userSurname}</span>

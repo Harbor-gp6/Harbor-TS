@@ -8,6 +8,7 @@ import { Typography } from '../../components/Typography/Typography'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import { Button } from 'flowbite-react'
+import Image from 'next/image'
 
 export default function Register() {
   const formik = useFormik({
@@ -32,7 +33,14 @@ export default function Register() {
 
   return (
     <div className='w-screen min-h-screen bg-gradient-to-b from-transparent to-white flex items-center justify-center relative'>
-      <img src="/images/graphs/grafismos.svg" alt="Grafismos" className='absolute top-0 z-0' />
+
+      <Image
+        src="/images/graphs/grafismos.svg"
+        alt="Grafismos"
+        className='absolute top-0 z-0'
+        height={400}
+        width={1920}
+      />
 
       <Container maxWidth="md" className="flex flex-col gap-4 z-10">
         <div className='flex flex-col gap-2'>

@@ -11,6 +11,7 @@ import { useSearchParams } from 'next/navigation'
 import { useFormik } from 'formik'
 import axios from 'axios'
 import { Button, Progress } from 'flowbite-react'
+import Image from 'next/image'
 
 export default function RegisterForm() {
   const [formInputs, setFormInputs] = useState('personalData')
@@ -147,7 +148,13 @@ export default function RegisterForm() {
 
       <div className='flex flex-col h-full w-full'>
         <div className='w-full min-h-full bg-gradient-to-b from-transparent to-white flex items-center justify-center relative'>
-          <img src="/images/graphs/grafismos.svg" alt="Grafismos" className='absolute top-0 z-0 bg-gradient-to-b from-transparent to-white' />
+          <Image
+            src="/images/graphs/grafismos.svg"
+            alt="Grafismos"
+            className='absolute top-0 z-0 bg-gradient-to-b from-transparent to-white'
+            height={400}
+            width={1920}
+          />
 
           <Container maxWidth="md" className="flex flex-col h-full gap-4 z-10">
             <form onSubmit={formik.handleSubmit}>

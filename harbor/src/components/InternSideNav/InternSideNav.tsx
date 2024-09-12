@@ -195,10 +195,10 @@ export function InternSideNav() {
 
   return (
     <>
-      <Sidebar aria-label="Sidebar with call to action button example" color='black' className="hidden md:block bg-gray-900 text-white">
-        <div className='flex flex-col justify-between h-full'>
-          <Sidebar.Items>
-            <Sidebar.ItemGroup>
+      <Sidebar aria-label="Sidebar with call to action button example" color='black' className="hidden md:block text-white">
+        <div className='flex flex-col h-full'>
+          <Sidebar.Items className='h-full'>
+            <Sidebar.ItemGroup className='h-full'>
               <Sidebar.Item href="#" icon={HiChartPie} className="hover:bg-gray-700 hover:text-white">
                 Dashboard
               </Sidebar.Item>

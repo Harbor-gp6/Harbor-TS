@@ -1,5 +1,6 @@
-import { Chart } from "react-google-charts";
+'use client'
 
+import { Chart } from "react-google-charts";
 
 export const dataPagamento = [
   ["Mês/Ano", "Débito", "Crédito", "Dinheiro", "Pix", "Total de Vendas"],
