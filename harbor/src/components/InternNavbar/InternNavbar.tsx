@@ -30,10 +30,8 @@ export function InterNav() {
 
         if (isMounted) {
           setEmployee(response.data)
-          console.log('Employee data set:', response.data)
         }
       } catch (err) {
-        console.log(err)
       }
     }
 
@@ -45,7 +43,6 @@ export function InterNav() {
   }, [employeeId])
 
   useEffect(() => {
-    console.log('Component rendered or employee state changed:', employee)
   })
 
   return (

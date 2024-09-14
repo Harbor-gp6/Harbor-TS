@@ -108,8 +108,6 @@ export default function RegisterForm() {
     }
   })
 
-  console.log(formik.values.corpAddress)
-
   return (
     <div className='w-screen h-screen flex'>
       <div className='hidden lg:block h-full'>

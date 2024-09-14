@@ -30,8 +30,6 @@ export function LoginForm() {
 
         if (user) {
           const userInfos = user as SignInResult
-          console.log('user', user)
-          console.log('valores', values)
           alert('login Realizado')
           router.push(`/dashboard/${userInfos.userId}`)
           resetForm()
