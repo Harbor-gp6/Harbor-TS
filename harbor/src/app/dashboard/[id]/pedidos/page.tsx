@@ -1,8 +1,11 @@
+import { Container } from '@/components/Container/Container'
 import { ServiceCard } from '@/components/ServiceCard/ServiceCard'
 import { Typography } from '@/components/Typography/Typography'
 import { GetOrdersByEmployeeId } from '@/lib/get-orders-by-employee-id'
 import { PedidoListagemDto } from '@/types/pedido/PedidoListagemDto'
+import { PedidoPrestador } from '@/types/pedido/PedidoPrestadorDto'
 import { PedidoServicoListagemDto } from '@/types/pedido/PedidoServicoListagemDto'
+import { PedidoPrestadorDto } from '@/types/pedidoV2/PedidoPrestadorDto'
 import { SignInResult } from '@/types/SignInResult'
 import { format } from 'date-fns'
 import { cookies } from 'next/headers'
@@ -14,7 +17,10 @@ export default async function DashboardOrdersPage() {
   const pedidosPendentes = await GetOrdersByEmployeeId(user.token)
 
   return (
-    <div className='flex flex-col gap-6 w-full items-center'>
+    <Container
+      maxWidth='lg'
+      className='flex flex-col gap-6 w-full items-center py-10'
+    >
       {!pedidosPendentes && (
         <div className='flex items-center justify-center w-full h-full'>
           <Typography
@@ -28,17 +34,14 @@ export default async function DashboardOrdersPage() {
         <ServiceCard
           key={index}
           id={pedido.id}
-          service={pedido.listaServico.map((servico: PedidoServicoListagemDto) => (
-            servico.servico.descricaoServico
-          ))}
-          provider={`${pedido.prestador.nome} ${pedido.prestador.sobrenome}`}
+          service={pedido.pedidoPrestador?.map((prestador: PedidoPrestador) => prestador.servico?.descricaoServico || '')}
+          provider={pedido.pedidoPrestador.map((prestador: PedidoPrestador) => `${prestador.prestador.nome || ''} ${prestador.prestador.sobrenome || ''}`)}
           time={format(new Date(pedido.dataAgendamento).toISOString(), 'PP')}
-          client={pedido.cliente}
-          price={new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(pedido.total)}
+          client={`${pedido.cliente.nome} ${pedido.cliente.sobrenome}`}
+          price={new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(pedido.totalPedido)}
           payment={pedido.formaPagamentoEnum}
-          onClose={() => ''}
         />
       ))}
-    </div>
+    </Container>
   )
 }
