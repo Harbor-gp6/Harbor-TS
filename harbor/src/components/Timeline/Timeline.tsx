@@ -1,6 +1,9 @@
+'use client'
+
 import { format } from 'date-fns'
 import { Button, Timeline } from "flowbite-react"
 import { HiArrowNarrowRight, HiCalendar } from "react-icons/hi"
+import { Typography } from '../Typography/Typography'
 
 type TimelineCustomProps = {
   pedidosList: any[]
@@ -14,7 +17,11 @@ export function TimelineCustom({ pedidosList }: TimelineCustomProps) {
       </h1>
       {pedidosList.length === 0 && (
         <div className='flex w-full items-center justify-center'>
-          Nenhum atendimento realizado
+          <Typography
+            color='black'
+          >
+            Nenhum atendimento realizado
+          </Typography>
         </div>
       )}
       {pedidosList.length > 0 && pedidosList.map((pedido, index) => (

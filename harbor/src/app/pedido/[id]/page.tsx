@@ -23,6 +23,7 @@ export default async function Pedido(props: PedidoProps) {
         enterpriseId={enterpriseId}
         services={services}
         enterprise={enterprise}
+        products={[]}
       />
     </Container>
 

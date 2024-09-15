@@ -1,8 +1,8 @@
-import DashboardMainContent from './components/DashboardMainContent'
+import { DashboardMainContent } from './components/DashboardMainContent'
 
 type DashboardPageProps = {
   params: {
-    id: number
+    id: string
   }
 }
 

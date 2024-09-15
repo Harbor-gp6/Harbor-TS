@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import clsx, { ClassArray, ClassValue } from 'clsx'
 
-type TypographyColors = 'white' | 'body' | 'primary' | 'black' | 'warning'
+type TypographyColors = 'white' | 'body' | 'primary' | 'black' | 'blueEnd' | 'warning'
 type TypographySize = 'xl' | 'lg' | 'base' | 'sm' | 'xs'
 type TypographyPosition = 'center' | 'left' | 'right'
 
@@ -29,7 +29,8 @@ export function Typography({ children, color = defaultColor, textPosition = defa
     color === 'body' && 'text-body',
     color === 'primary' && 'text-primary',
     color === 'black' && 'text-black',
-    color === 'black' && 'text-black',
+    color === 'blueEnd' && 'text-blueEnd',
+    color === 'warning' && 'text-warning',
     textPosition === 'center' && 'text-center',
     textPosition === 'left' && 'text-left',
     textPosition === 'right' && 'text-right',

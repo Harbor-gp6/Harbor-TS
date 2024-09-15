@@ -3,12 +3,12 @@
 import { SignInResult } from '@/types/SignInResult'
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 import { setCookie, getCookie, deleteCookie } from 'cookies-next'
-import axios, { AxiosError, AxiosResponse } from 'axios'
+import axios, { AxiosError } from 'axios'
 
 
 interface AuthContextProps {
   user: any
-  login: (email: string, password: string) => Promise<AxiosResponse | AxiosError | null>
+  login: (email: string, password: string) => Promise<SignInResult | AxiosError | null>
   logout: () => void
 }
 
@@ -32,7 +32,7 @@ export function AuthProvider (props: AuthProviderProps) {
     }
   }, [])
 
-  const login = async (email: string, password: string): Promise<AxiosResponse | null> => {
+  const login = async (email: string, password: string): Promise<SignInResult | AxiosError | null> => {
     try {
       const loginCommandData = {
         email,
@@ -46,12 +46,13 @@ export function AuthProvider (props: AuthProviderProps) {
           userId: result.userId,
           nome: result.nome,
           email: result.email,
-          token: result.token
+          token: result.token,
+          idEmpresa: result.idEmpresa
         }
 
         setUser(userInfos)
         setCookie('user', JSON.stringify(userInfos))
-        return response
+        return response.data
       }).catch((err: AxiosError) => {
         const errorData: any = err.response
         return errorData

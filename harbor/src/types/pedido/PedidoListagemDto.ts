@@ -1,15 +1,14 @@
-import { PrestadorListagemDto } from '../prestador/PrestadorListagemDto'
+import { ClienteListagemDto } from '../cliente/ClienteListagemDto'
+import { PedidoPrestador } from './PedidoPrestadorDto'
 import { PedidoProdutoListagemDto } from './PedidoProdutoListagemDto'
-import { PedidoServicoListagemDto } from './PedidoServicoListagemDto'
 
 export type PedidoListagemDto = {
   id: number
-  cliente: string
-  listaProduto: PedidoProdutoListagemDto[]
-  listaServico: PedidoServicoListagemDto[]
+  cliente: ClienteListagemDto
+  pedidoProdutos: PedidoProdutoListagemDto[]
   dataAgendamento: Date
-  prestador: PrestadorListagemDto
+  pedidoPrestador: PedidoPrestador[]
   finalizado: boolean
-  total: number
+  totalPedido: number
   formaPagamentoEnum: string
 }

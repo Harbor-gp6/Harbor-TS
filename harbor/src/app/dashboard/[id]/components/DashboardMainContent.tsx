@@ -1,108 +1,32 @@
-'use client'
-
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import { PedidoListagemDto } from '@/types/pedido/PedidoListagemDto'
 import { Typography } from '@mui/material'
 import { TimelineCustom } from '@/components/Timeline/Timeline'
 import { PieChartCustom } from '@/components/PieChart/PieChart'
 import { ChartCustom } from '@/components/Charts/Charts'
-// import { format } from 'date-fns'
+import { GetOrdersByEmployeeId } from '@/lib/get-orders-by-employee-id'
+import { GetMonthlyGrossRevenue } from '@/lib/get-monthly-gross-revenue'
+import { GetDailyGrossRevenue } from '@/lib/get-daily-gross-revenue'
+import { useAuthentication } from '@/hooks/use-authentication'
+import { cookies } from 'next/headers'
+import { SignInResult } from '@/types/SignInResult'
+import { format } from 'date-fns'
 
 type DashboardMainContentProps = {
   id: number | string
 }
 
-export default function DashboardMainContent (props: DashboardMainContentProps) {
+export async function DashboardMainContent (props: DashboardMainContentProps) {
   const { id } = props
   const employeeId = id
-  const [data, setData] = useState<PedidoListagemDto[]>([])
-  const [monthRendings, setMonthRendings] = useState(0)
-  const [dailyRendings, setDailyRendings] = useState(0)
-
-  useEffect(() => {
-    let isMounted = true
-
-    async function fetchEmployee() {
-      try {
-        const response = await axios.get(`http://localhost:8080/pedidos/prestador/${employeeId}`, {
-          headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb2huQGRvZS5jb20iLCJpYXQiOjE3MjQxODkxNDcsImV4cCI6MTcyNzc4OTE0N30.55qgcfoFZFwvTNB4MvKWoz2yziWtHad1tMZRaTItu1r8S0PKhvzctr1iNB-BnHQvCCG9iDmE7pf0ZWA1_Ye3hw'
-          }
-        })
-
-        if (isMounted) {
-          setData(response.data)
-          console.log('Employee data set:', response.data)
-        }
-      } catch (err) {
-        console.log(err)
-      }
-    }
-
-    async function fetchMonthRendings() {
-      const ano = new Date().getFullYear()
-      const mes = String(new Date().getMonth() + 1).padStart(2, '0')
-      const mesFuturo = String(new Date().getMonth() + 2).padStart(2, '0')
-
-      const dataAtualFormatada = `${ano}-${mes}-01`
-      const dataFuturaFormatada = `${ano}-${mesFuturo}-01`
-      try {
-        const response = await axios.get(`http://localhost:8080/relatorios/faturamento-bruto/${employeeId}?dataInicio=${dataAtualFormatada}&dataFim=${dataFuturaFormatada}`, {
-          headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb2huQGRvZS5jb20iLCJpYXQiOjE3MjQxODkxNDcsImV4cCI6MTcyNzc4OTE0N30.55qgcfoFZFwvTNB4MvKWoz2yziWtHad1tMZRaTItu1r8S0PKhvzctr1iNB-BnHQvCCG9iDmE7pf0ZWA1_Ye3hw'
-          }
-        })
-
-        if (isMounted) {
-          setMonthRendings(response.data)
-          console.log('Employee data set:', response.data)
-        }
-      } catch (err) {
-        console.log(err)
-      }
-    }
-
-    async function fetchDailyRendings() {
-      const ano = new Date().getFullYear()
-      const mes = String(new Date().getMonth() + 1).padStart(2, '0')
-      const dia = String(new Date().getDate()).padStart(2, '0')
-
-      const dataAtualFormatada = `${ano}-${mes}-${dia}`
-
-      try {
-        const response = await axios.get(`http://localhost:8080/relatorios/faturamento-bruto/${employeeId}?dataInicio=${dataAtualFormatada}&dataFim=${dataAtualFormatada}`, {
-          headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb2huQGRvZS5jb20iLCJpYXQiOjE3MjQxODkxNDcsImV4cCI6MTcyNzc4OTE0N30.55qgcfoFZFwvTNB4MvKWoz2yziWtHad1tMZRaTItu1r8S0PKhvzctr1iNB-BnHQvCCG9iDmE7pf0ZWA1_Ye3hw'
-          }
-        })
-
-        if (isMounted) {
-          setDailyRendings(response.data)
-          console.log('Employee data set:', response.data)
-        }
-      } catch (err) {
-        console.log(err)
-      }
-    }
-
-    fetchEmployee()
-    fetchDailyRendings()
-    fetchMonthRendings()
-
-    return () => {
-      isMounted = false
-    }
-  }, [data, employeeId])
-
-  useEffect(() => {
-    console.log('Component rendered or employee state changed:', data)
-  })
-
-  const pedidosAtendidos = data.filter((pedido) => pedido.finalizado === true)
+  const userCookies = cookies()
+  const userInfos = userCookies.get('user')
+  const user: SignInResult = JSON.parse(userInfos?.value || '')
+  const orders = await GetOrdersByEmployeeId(user.token)
+  const monthRendings = await GetMonthlyGrossRevenue(employeeId, user.token)
+  const dailyRendings = await GetDailyGrossRevenue(employeeId, user.token)
+  const pedidosAtendidos = orders?.filter((pedido) => pedido.finalizado === true) ?? []
   const ultimos = pedidosAtendidos.sort((a, b) => b.dataAgendamento.getUTCDate() - a.dataAgendamento.getUTCDate()).slice(0, 3)
-  const pedidosPendentes = data.filter((pedido) => (pedido.finalizado === false ))
-  // const pedidosHoje = pedidosAtendidos.filter((pedido) => format(new Date(pedido.dataAgendamento), 'PP') === format(new Date().toISOString(), 'PP'))
+  const pedidosPendentes = orders?.filter((pedido) => (pedido.finalizado === false )) ?? []
+  const pedidosHoje = pedidosAtendidos.filter((pedido) => format(new Date(pedido.dataAgendamento), 'PP') === format(new Date().toISOString(), 'PP'))
 
   return (
     <div className="w-full h-full mb-20 p-0 bg-gray-200 pt-10 rounded-xl">
@@ -136,7 +60,7 @@ export default function DashboardMainContent (props: DashboardMainContentProps) 
             <PieChartCustom />
           </div>
           <div className="bg-white p-6 rounded-lg shadow-md flex justify-center">
-            <ChartCustom pedidosList={data} />
+            <ChartCustom pedidosList={orders || []} />
           </div>
         </div>
       </div>
