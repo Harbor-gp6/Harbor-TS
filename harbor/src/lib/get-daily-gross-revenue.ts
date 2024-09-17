@@ -1,8 +1,6 @@
 import axios from 'axios'
 
-export async function GetDailyGrossRevenue(employeeId: string | number, token: string) {
-
-  const id = typeof (employeeId) === 'string' ? Number(employeeId) : employeeId
+export async function GetDailyGrossRevenue(token: string) {
 
   const ano = new Date().getFullYear()
   const mes = String(new Date().getMonth() + 1).padStart(2, '0')
@@ -10,7 +8,7 @@ export async function GetDailyGrossRevenue(employeeId: string | number, token: s
 
   const dataAtualFormatada = `${ano}-${mes}-${dia}`
 
-    const response = await axios.get(`http://localhost:8080/relatorios/faturamento-bruto/${employeeId}?dataInicio=${dataAtualFormatada}&dataFim=${dataAtualFormatada}`, {
+    const response = await axios.get(`http://localhost:8080/relatorios/faturamento-empresa?dataInicio=${dataAtualFormatada}&dataFim=${dataAtualFormatada}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
