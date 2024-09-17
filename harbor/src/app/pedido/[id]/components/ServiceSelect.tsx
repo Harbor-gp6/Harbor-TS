@@ -27,13 +27,13 @@ type ServiceSelectProps = {
   emailValue: string
   onChange: any
   onSubmit: any
-  dateValue: string
-  timeValue: string
   paymentValue: string
   totalTime: number
   onChangePage: () => void
   employees: PrestadorListagemDto[]
   onSelectEmployee: (value: any) => void
+  onSelectPayment: (value: string) => void
+  onDateTimeSelect: (formattedDateTime: string) => void
 }
 
 export function ServiceSelect(props: ServiceSelectProps) {
@@ -44,7 +44,6 @@ export function ServiceSelect(props: ServiceSelectProps) {
     selectedServices,
     valorTotalServico,
     cpfValue,
-    dateValue,
     emailValue,
     nameValue,
     onChange,
@@ -54,8 +53,8 @@ export function ServiceSelect(props: ServiceSelectProps) {
     paymentValue,
     phoneValue,
     surnameValue,
-    timeValue,
-    products,
+    onDateTimeSelect,
+    onSelectPayment,
     totalTime,
     onSelectEmployee,
     employees
@@ -114,7 +113,7 @@ export function ServiceSelect(props: ServiceSelectProps) {
           size={4}
           className="text-left pt-6 pb-1"
         >
-          {enterprise?.razaoSocial || 'Nome do estabelecimento'}
+          {enterprise?.nomeFantasia || 'Nome do estabelecimento'}
         </Heading>
 
         <Typography
@@ -160,8 +159,7 @@ export function ServiceSelect(props: ServiceSelectProps) {
             emailValue={emailValue}
             onChange={onChange}
             onSubmit={onSubmit}
-            dateValue={dateValue}
-            timeValue={timeValue}
+            onDateTimeSelect={onDateTimeSelect}
             paymentValue={paymentValue}
             onChangePage={onChangePage}
             employees={employees}
@@ -179,7 +177,8 @@ export function ServiceSelect(props: ServiceSelectProps) {
           paymentValue={paymentValue}
           onClose={() => setOpenModal(false)}
           open={openModal}
-          totalTime={''}
+          onPaymentSelect={onSelectPayment}
+          totalTime={totalTime}
           totalValue={valorTotalServico}
         />
 
@@ -191,6 +190,7 @@ export function ServiceSelect(props: ServiceSelectProps) {
       <div className="w-full">
         <Checkout
           totalValue={valorTotalServico}
+          avgTime={totalTime}
           onClick={() => setOpenModal(true)}
         />
       </div>

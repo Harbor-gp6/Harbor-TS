@@ -39,8 +39,7 @@ export function PedidoContent(props: PedidoContentProps) {
       cpf: '',
       phone: '',
       email: '',
-      date: '',
-      time: '',
+      orderDate: '',
       formaPagamento: ''
     },
     onSubmit: (async (values, { resetForm }) => {
@@ -52,17 +51,22 @@ export function PedidoContent(props: PedidoContentProps) {
         telefone: values.phone
       }
 
-      console.log(selectedSevices)
+      const data = values.orderDate
+      const [dia, mes, anoHora] = data.split('/')
+      const [ano, hora] = anoHora.split(' ')
+
+      // Converte para o formato ISO 8601: YYYY-MM-DDTHH:MM
+      const dataFormatada = `${ano}-${mes}-${dia}T${hora}`
+      const dateObj = new Date(dataFormatada)
 
       const createOrderData: PedidoV2CriacaoDto = {
         cliente: client,
         cnpjEmpresa: enterprise.cnpj,
         pedidoPrestador: createOrder(),
-        dataAgendamento: new Date(`${values.date}T${values.time}:00`),
-        pedidoProduto: [],
-        formaPagamento: values.formaPagamento
+        dataAgendamento: dateObj,
+        formaPagamentoEnum: values.formaPagamento,
+        pedidoProdutos: []
       }
-
 
       try {
        await axios.post('http://localhost:8080/pedidos/criarPedidoV2', createOrderData).then(() => {
@@ -74,12 +78,16 @@ export function PedidoContent(props: PedidoContentProps) {
           const errorData: any = error.response?.data
           if (errorData.status === 500) {
             alert('Não foi possível cadastrar seu pedido, tente novamente mais tarde.')
+            console.error(errorData)
           } else if (errorData.status === 401) {
             alert('Você não está autorizado a fazer essa ação')
           } else if (errorData.status === 400) {
             alert('Há alguma informação incorreta')
+          } else {
+            console.error('Erro:', errorData.message)
           }
         })
+      console.log('Pedido:', JSON.stringify(createOrderData))
       } catch (error: any) {
         throw new Error(error)
       }
@@ -114,7 +122,7 @@ export function PedidoContent(props: PedidoContentProps) {
       for (const service of selectedSevices) {
         const order: PedidoPrestadorDto = {
           servicoId: service.id,
-          prestadorId: employeeId!
+          prestadorId: Number(employeeId!)
         }
         newOrder.push(order)
       }
@@ -141,13 +149,13 @@ export function PedidoContent(props: PedidoContentProps) {
           selectedServices={selectedSevices}
           valorTotalServico={calculatedValue()}
           cpfValue={formik.values.cpf}
-          dateValue={formik.values.date}
           emailValue={formik.values.email}
           nameValue={formik.values.name}
           paymentValue={formik.values.formaPagamento}
           phoneValue={formik.values.phone}
           surnameValue={formik.values.surname}
-          timeValue={formik.values.time}
+          onDateTimeSelect={(e) => formik.setFieldValue('orderDate', e)}
+          onSelectPayment={(value) => formik.setFieldValue('formaPagamento', value)}
           onChange={formik.handleChange}
           onSubmit={formik.handleSubmit}
           onChangePage={() => setPage('servicosPage')}
