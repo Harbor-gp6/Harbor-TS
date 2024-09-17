@@ -17,5 +17,4 @@ export async function FinishOrder(id: number, token: string) {
     alert(err);
     console.error(errorData.message);
   });
-  console.log('token:', token);
 }
