@@ -64,7 +64,7 @@ export function PedidoContent(props: PedidoContentProps) {
         cnpjEmpresa: enterprise.cnpj,
         pedidoPrestador: createOrder(),
         dataAgendamento: dateObj,
-        formaPagamento: 1,
+        formaPagamentoEnum: values.formaPagamento,
         pedidoProdutos: []
       }
 
@@ -155,6 +155,7 @@ export function PedidoContent(props: PedidoContentProps) {
           phoneValue={formik.values.phone}
           surnameValue={formik.values.surname}
           onDateTimeSelect={(e) => formik.setFieldValue('orderDate', e)}
+          onSelectPayment={(value) => formik.setFieldValue('formaPagamento', value)}
           onChange={formik.handleChange}
           onSubmit={formik.handleSubmit}
           onChangePage={() => setPage('servicosPage')}

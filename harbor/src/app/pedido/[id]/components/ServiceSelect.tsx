@@ -32,6 +32,7 @@ type ServiceSelectProps = {
   onChangePage: () => void
   employees: PrestadorListagemDto[]
   onSelectEmployee: (value: any) => void
+  onSelectPayment: (value: string) => void
   onDateTimeSelect: (formattedDateTime: string) => void
 }
 
@@ -53,6 +54,7 @@ export function ServiceSelect(props: ServiceSelectProps) {
     phoneValue,
     surnameValue,
     onDateTimeSelect,
+    onSelectPayment,
     totalTime,
     onSelectEmployee,
     employees
@@ -175,7 +177,8 @@ export function ServiceSelect(props: ServiceSelectProps) {
           paymentValue={paymentValue}
           onClose={() => setOpenModal(false)}
           open={openModal}
-          totalTime={''}
+          onPaymentSelect={onSelectPayment}
+          totalTime={totalTime}
           totalValue={valorTotalServico}
         />
 
@@ -187,6 +190,7 @@ export function ServiceSelect(props: ServiceSelectProps) {
       <div className="w-full">
         <Checkout
           totalValue={valorTotalServico}
+          avgTime={totalTime}
           onClick={() => setOpenModal(true)}
         />
       </div>

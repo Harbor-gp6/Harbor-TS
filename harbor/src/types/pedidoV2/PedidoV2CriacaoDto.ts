@@ -8,5 +8,5 @@ export type PedidoV2CriacaoDto = {
   pedidoPrestador: PedidoPrestadorDto[]
   pedidoProdutos: PedidoProdutoV2Dto[]
   dataAgendamento: Date
-  formaPagamento: string | number
+  formaPagamentoEnum: string | number
 }
