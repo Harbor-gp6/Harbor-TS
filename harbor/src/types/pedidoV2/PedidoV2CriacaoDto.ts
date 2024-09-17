@@ -6,7 +6,7 @@ export type PedidoV2CriacaoDto = {
   cliente: ClienteCriacaoDto
   cnpjEmpresa: string
   pedidoPrestador: PedidoPrestadorDto[]
-  pedidoProduto: PedidoProdutoV2Dto[]
+  pedidoProdutos: PedidoProdutoV2Dto[]
   dataAgendamento: Date
-  formaPagamento: string
+  formaPagamento: string | number
 }

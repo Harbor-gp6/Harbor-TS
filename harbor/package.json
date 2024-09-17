@@ -30,6 +30,7 @@
     "react-dom": "^18",
     "react-google-charts": "^4.0.1",
     "react-wavify": "^1.11.1",
+    "swiper": "^11.1.14",
     "tailwind-merge": "^2.5.2",
     "tailwind-variants": "^0.2.1",
     "yup": "^1.4.0"

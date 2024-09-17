@@ -2,9 +2,8 @@
 
 import { Button, Modal as FlowbiteModal } from "flowbite-react"
 import { useState } from "react"
-import { Typography } from "../Typography/Typography"
 import { ServicoCard } from "../ServicoCard/ServicoCard"
-import { ModalFormCliente } from "../ModalFormCliente/ModalFormCliente"
+import { DateTimePicker } from '../DateTimePicker/DateTimePicker'
 import { PrestadorListagemDto } from '@/types/prestador/PrestadorListagemDto'
 
 type ModalHorariosProps = {
@@ -21,8 +20,7 @@ type ModalHorariosProps = {
   onChange: () => void
   emailValue: string
   onSubmit: () => void
-  dateValue: string
-  timeValue: string
+  onDateTimeSelect: (formattedDateTime: string) => void
   paymentValue: string
   employees: PrestadorListagemDto[]
   onSelectEmployee: (value: any) => void
@@ -42,14 +40,12 @@ export function ModalHorarios({
   onChange,
   emailValue,
   onSubmit,
-  dateValue,
-  timeValue,
+  onDateTimeSelect,
   paymentValue,
   onSelectEmployee,
   employees
 }: ModalHorariosProps) {
   const [openModal, setOpenModal] = useState(false)
-  const [openFormModal, setOpenFormModal] = useState(false)
   const [selectedEmployee, setSelectedEmployee] = useState('')
 
   return (
@@ -66,17 +62,15 @@ export function ModalHorarios({
           <FlowbiteModal.Body className="w-full h-full">
             <div className='flex flex-col gap-4'>
               <div className="flex gap-2 overflow-auto">
-                <label className='text-body' htmlFor="date">Selecione a data:</label>
-                <input type="date" className='text-body' value={dateValue} onChange={onChange} id="date" name="date" />
-              </div>
-              <div className="flex gap-2 overflow-auto">
-                <label className='text-body' htmlFor="time">Selecione o horário:</label>
-                <input className='text-body' type="time" value={timeValue} onChange={onChange} id="time" name="time" />
-              </div>
-              <div className="flex gap-2 overflow-auto">
-                <label className='text-body' htmlFor="employees">Selecione o Funcionario:</label>
-                <select name="employees" id="employees" onChange={(e) => setSelectedEmployee(e.target.value)} className='text-body'>
-                  <option value="" selected>Selecione o funcionário</option>
+                <label className='text-body' htmlFor="employees">Selecione o Funcionário:</label>
+                <select
+                  name="employees"
+                  id="employees"
+                  value={selectedEmployee} // Atribuir o valor corretamente
+                  onChange={(e) => setSelectedEmployee(e.target.value)} // Atualizar o estado corretamente
+                  className='text-body'
+                >
+                  <option value="" disabled>Selecione o funcionário</option>
                   {employees.map((employee, index) => (
                     <option value={employee.id} key={index} className='text-body'>
                       {employee.nome}
@@ -84,6 +78,9 @@ export function ModalHorarios({
                   ))}
                 </select>
               </div>
+              {selectedEmployee && (
+                <DateTimePicker onDateTimeSelect={onDateTimeSelect} employeeId={Number(selectedEmployee)} />
+              )}
             </div>
             <div className="space-y-6">
               {serviceList.length === 0 && (
@@ -99,7 +96,8 @@ export function ModalHorarios({
                   horario="08:00"
                   barbeiro={serviceEmployee.nome}
                   data="01/01/2022"
-                  onChangeEmployee={onChangePage} />
+                  onChangeEmployee={onChangePage}
+                />
               ))}
               <div className='flex w-full items-center justify-center'>
                 <Button
@@ -116,7 +114,6 @@ export function ModalHorarios({
           </FlowbiteModal.Body>
         </div>
       </FlowbiteModal>
-
     </>
   )
 }

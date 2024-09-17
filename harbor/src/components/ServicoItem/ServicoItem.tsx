@@ -20,8 +20,7 @@ type ServicoItemProps = {
     onChange: any
     emailValue: string
     onSubmit: () => void
-    dateValue: string
-    timeValue: string
+    onDateTimeSelect: (formattedDateTime: string) => void
     paymentValue: string
     employees: PrestadorListagemDto[]
 }
@@ -44,8 +43,7 @@ export function ServicoItem({
     onChange,
     emailValue,
     onSubmit,
-    dateValue,
-    timeValue,
+    onDateTimeSelect,
     paymentValue,
     employees
 }: ServicoItemProps) {
@@ -76,10 +74,10 @@ export function ServicoItem({
                     emailValue={emailValue}
                     paymentValue={paymentValue}
                     onSubmit={onSubmit}
-                    dateValue={dateValue}
-                    timeValue={timeValue}
+                    onDateTimeSelect={onDateTimeSelect}
                     employees={employees}
                     onSelectEmployee={onSelectEmployee}
+
                 />
             </div>
 
