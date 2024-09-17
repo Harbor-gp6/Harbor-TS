@@ -2,6 +2,7 @@
 
 import { Container } from '@/components/Container/Container'
 import { useAuth } from '@/contexts/auth-context'
+import { DownloadReportEmployee } from '@/lib/download-employee-report'
 import { DownloadReport } from '@/lib/download-report'
 import { useState } from 'react'
 
@@ -47,11 +48,17 @@ export function ReportMainContent() {
         </div>
       </div>
 
-      <div className="space-y-2">
+      <div className="flex flex-col gap-2">
         {/* <p className="text-gray-800">Faturamento Bruto</p>
             <p className="text-gray-800">Ticket Médio</p> */}
         <button onClick={async () => await DownloadReport(startDate, endDate, user.token)}>
-          <p className="text-gray-800">Baixar Relatório</p>
+          <p className="text-gray-800">Produtos mais consumidos</p>
+        </button>
+        <button onClick={async () => await DownloadReportEmployee(startDate, endDate, user.token)}>
+          <p className="text-gray-800">Pedidos por prestador</p>
+        </button>
+        <button onClick={async () => await DownloadReport(startDate, endDate, user.token)}>
+          <p className="text-gray-800">Avaliação por prestador</p>
         </button>
         {/* <p className="text-gray-800">Receita por Tipo de Serviço</p>
             <p className="text-gray-800">Receita por Produto Consumido</p>

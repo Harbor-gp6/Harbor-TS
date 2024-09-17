@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-export async function DownloadReport (startDate: string, endDate: string, token: string) {
-  await axios.get(`http://localhost:8080/relatorios/PDF/produtos-mais-consumidos?dataInicio=${startDate}&dataFim=${endDate}`, {
+export async function DownloadReportEmployee (startDate: string, endDate: string, token: string) {
+  await axios.get(`http://localhost:8080/relatorios/PDF/pedidos-atendidos-por-prestador?dataInicio=${startDate}&dataFim=${endDate}`, {
     headers: {
       Authorization: `Bearer ${token}`
     },
@@ -16,7 +16,7 @@ export async function DownloadReport (startDate: string, endDate: string, token:
     // Cria um elemento de âncora temporário
     var tempLink = document.createElement('a')
     tempLink.href = url
-    tempLink.download = 'ProdutosMaisConsumidos.pdf'  // Nome do arquivo que será baixado
+    tempLink.download = 'PedidosPorPrestador.pdf'  // Nome do arquivo que será baixado
 
     // Adiciona o link ao documento
     document.body.appendChild(tempLink)
