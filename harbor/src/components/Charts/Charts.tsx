@@ -62,7 +62,7 @@ export function ChartCustom({ pedidosList }: ChartCustomProps) {
 
   // Iterar sobre o array de serviços
   for (const servico of pedidosList) {
-    const nomeServico = servico.listaServico ? servico.listaServico[0]?.servico.descricaoServico : ''
+    const nomeServico = servico.pedidoPrestador ? servico.pedidoPrestador[0]?.servico.descricaoServico : ''
     // Se a hora já existe no objeto, incrementar a contagem, caso contrário, iniciar com 1
     if (servicosObj[nomeServico]) {
       servicosObj[nomeServico]++
@@ -83,17 +83,14 @@ export function ChartCustom({ pedidosList }: ChartCustomProps) {
     pedidos: pedidosPorHora[hora]
 }));
 
-
-
-
   return (
     <div className="w-full h-full flex flex-col sm:flex gap-4 justify-between items-center">
       <div className="w-full">
         <BarChart
           className="h-72 w-full"
-          data={atendimentosPorHorarioDataMock}
+          data={atendimentosPorHorarioData}
           index="horario"
-          categories={["atendimentos"]}
+          categories={["pedidos"]}
           yAxisWidth={80}
           layout="vertical"
         />
@@ -101,7 +98,7 @@ export function ChartCustom({ pedidosList }: ChartCustomProps) {
       <div className="w-full">
         <BarChart
           className="h-72 w-full"
-          data={servicosPopularesDataMock}
+          data={servicosPopularesData}
           index="servico"
           categories={["quantidade"]}
           yAxisWidth={80}

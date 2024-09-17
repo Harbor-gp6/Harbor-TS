@@ -10,6 +10,7 @@ type TimelineCustomProps = {
 }
 
 export function TimelineCustom({ pedidosList }: TimelineCustomProps) {
+
   return (
     <Timeline>
       <h1 className="text-xl pb-5 flex justify-center">
@@ -30,9 +31,9 @@ export function TimelineCustom({ pedidosList }: TimelineCustomProps) {
           {format(new Date(pedido.dataAgendamento).toISOString(), 'p')}
           <Timeline.Content>
             <Timeline.Time>{format(new Date(pedido.dataAgendamento).toISOString(), 'PP')}</Timeline.Time>
-            <Timeline.Title>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(pedido.total)}</Timeline.Title>
+            <Timeline.Title>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(pedido.totalPedido)}</Timeline.Title>
             <Timeline.Body>
-              {pedido.listaServico.map((servico: any) => (
+              {pedido.pedidoPrestador.map((servico: any) => (
                 <>
                   {servico.servico.descricaoServico}
                 </>
