@@ -43,6 +43,7 @@ export function FormInput ({
       className={clsx(
         'rounded-xl',
         'p-3',
+        'text-black',
         ...(Array.isArray(className) ? className : [className])
       )}
     />
