@@ -42,17 +42,26 @@ export function RegisterInfosPage() {
       neighborhood: '',
       corpCity: '',
       corpNumber: '',
-      corpComplement: ''
+      corpComplement: '',
+      openingTime: '',
+      endingTime: ''
     },
-    onSubmit: (values, { resetForm }) => {
-      axios.post('http://localhost:8080/usuarios', {
+    onSubmit: async (values, { resetForm }) => {
+      const convertTimeToDate = (time: string) => {
+        const [hours, minutes] = time.split(":").map(Number)
+        const currentDate = new Date()
+        currentDate.setHours(hours, minutes)
+        const formattedTime = `${currentDate.getHours().toString().padStart(2, "0")}:${currentDate.getMinutes().toString().padStart(2, "0")}`
+        return formattedTime
+      }
+
+      const createAccount = {
         nome: values.name,
         sobrenome: values.surname,
         telefone: values.phone,
         cpf: values.cpf,
         email: values.email,
         senha: values.password,
-        cargo: "ADMIN",
         empresa: {
           razaoSocial: values.corpName,
           nomeFantasia: values.fantasyName,
@@ -65,19 +74,25 @@ export function RegisterInfosPage() {
             numero: values.corpNumber,
             cep: values.corpCep,
             complemento: values.corpComplement
-          }
+          },
+          horarioAbertura: convertTimeToDate(values.openingTime),
+          horarioFechamento: convertTimeToDate(values.endingTime)
         }
-      }).then(() => {
-        alert("Cadastro realizado com sucesso")
-        window.location.href = '/login'
-        resetForm()
-      }).catch((err) => {
-        alert(err)
-      })
+      }
+
+      await axios.post('http://localhost:8080/usuarios', createAccount)
+        .then(() => {
+          alert("Cadastro realizado com sucesso")
+          window.location.href = '/login'
+          resetForm()
+        })
+        .catch((err) => {
+          alert("Erro ao realizar cadastro: " + err)
+          console.log('Erro ao criar conta:', createAccount)
+        })
     }
   })
 
-  console.log(formik.values.corpAddress)
 
   return (
     <div className='w-full flex min-h-screen'>
@@ -145,6 +160,8 @@ export function RegisterInfosPage() {
                   corpNameValue={formik.values.corpName}
                   fantasyNameValue={formik.values.fantasyName}
                   phoneValue={formik.values.corpPhone}
+                  openingValue={formik.values.openingTime}
+                  endingValue={formik.values.endingTime}
                   onChange={formik.handleChange}
                   onChangePage={setFormInputs}
                 />

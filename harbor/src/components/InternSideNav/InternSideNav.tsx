@@ -19,7 +19,6 @@ type InternSideNavProps = {
 export function InternSideNav(props: InternSideNavProps) {
   const { id } = props
   const pathname = usePathname()
-  console.log(pathname)
 
   return (
     <>

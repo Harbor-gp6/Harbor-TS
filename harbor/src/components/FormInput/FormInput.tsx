@@ -1,5 +1,5 @@
 import clsx, { ClassArray, ClassValue } from 'clsx'
-type InputType = 'email' | 'text' | 'number' | 'password'
+type InputType = 'email' | 'text' | 'number' | 'password' | 'time'
 
 type FormInputProps = {
   value?: string

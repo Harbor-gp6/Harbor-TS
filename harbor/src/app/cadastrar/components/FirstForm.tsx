@@ -1,3 +1,5 @@
+'use client'
+
 import { FormInput } from '@/components/FormInput/FormInput'
 import { Typography } from '@/components/Typography/Typography'
 import { Button } from 'flowbite-react'

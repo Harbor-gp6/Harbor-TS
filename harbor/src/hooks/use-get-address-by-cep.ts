@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { AddressInfos } from '@/types/AddressInfos'
 import { GetAddressByCep } from '@/lib/get-address-by-cep'
 
-export function useGetAddressByCep(cep: number) {
+export function useGetAddressByCep(cep: string) {
   const [corpAddress, setCorpAddress] = useState<AddressInfos | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)

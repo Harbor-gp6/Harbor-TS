@@ -11,10 +11,12 @@ type EnterpriseDataFormInputsProps = {
   fantasyNameValue: string
   cnpjValue: string
   phoneValue: string
+  openingValue: string
+  endingValue: string
 }
 
 export function EnterpriseDataFormInputs(props: EnterpriseDataFormInputsProps) {
-  const { onChange, onChangePage, cnpjValue, corpNameValue, fantasyNameValue, phoneValue } = props
+  const { onChange, onChangePage, cnpjValue, corpNameValue, fantasyNameValue, phoneValue, openingValue, endingValue } = props
 
   return (
     <div className='flex flex-col gap-4 h-full max-w-4xl mx-auto p-6'>
@@ -74,6 +76,26 @@ export function EnterpriseDataFormInputs(props: EnterpriseDataFormInputsProps) {
           name='corpPhone'
           onChange={onChange}
           value={phoneValue}
+        />
+        <Typography color="black" textPosition='left'>
+          Horário de abertura:
+        </Typography>
+        <FormInput
+          placeholder="Insira o horário de abertura"
+          type='time'
+          name='openingTime'
+          onChange={onChange}
+          value={openingValue}
+        />
+        <Typography color="black" textPosition='left'>
+          Horário de fechamento:
+        </Typography>
+        <FormInput
+          placeholder="Insira o horário de fechamento"
+          type='time'
+          name='endingTime'
+          onChange={onChange}
+          value={endingValue}
         />
       </div>
       <div className='flex flex-col w-full'>

@@ -1,7 +1,7 @@
 export type AddressInfos = {
   cep: string
-  estado: string
-  cidade: string
+  uf: string
+  localidade: string
   bairro: string
-  rua: string
+  logradouro: string
 }

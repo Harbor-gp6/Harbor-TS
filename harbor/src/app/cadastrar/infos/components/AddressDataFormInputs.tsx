@@ -24,7 +24,7 @@ export default function AddressDataFormInputs(props: AddressDataFormInputsProps)
   const { onChange, onChangePage, cityValue, complementValue, corpCepValue, onFieldChange, neighborhoodValue, numberValue, stateValue, streetValue } = props
   const [addressInfos, setAddressInfos] = useState<AddressInfos | null>(null)
 
-  async function GetAddressInfos (cep: number) {
+  async function GetAddressInfos (cep: string) {
     const infos = await GetAddressByCep(cep)
     if (infos) {
       setAddressInfos(infos)
@@ -60,7 +60,7 @@ export default function AddressDataFormInputs(props: AddressDataFormInputsProps)
           name='corpCep'
           onChange={onChange}
           value={corpCepValue}
-          onBlur={() => GetAddressInfos(Number(corpCepValue))}
+          onBlur={() => GetAddressInfos(corpCepValue)}
         />
         <Typography color='black' textPosition='left'>
           Estado:
@@ -70,7 +70,7 @@ export default function AddressDataFormInputs(props: AddressDataFormInputsProps)
           type='text'
           name='corpState'
           onChange={(e) => onFieldChange('corpState', e)}
-          value={addressInfos?.estado || stateValue}
+          value={addressInfos?.uf || stateValue}
         />
         <Typography color='black' textPosition='left'>
           Endereço:
@@ -80,7 +80,7 @@ export default function AddressDataFormInputs(props: AddressDataFormInputsProps)
           type='text'
           name='corpAddress'
           onChange={(e) => onFieldChange('corpAddress', e)}
-          value={addressInfos?.rua || streetValue}
+          value={addressInfos?.logradouro || streetValue}
         />
         <Typography color='black' textPosition='left'>
           Número:
@@ -110,7 +110,7 @@ export default function AddressDataFormInputs(props: AddressDataFormInputsProps)
           type='text'
           name='corpCity'
           onChange={(e) => onFieldChange('corpCity', e)}
-          value={addressInfos?.cidade || cityValue}
+          value={addressInfos?.localidade || cityValue}
         />
         <Typography color='black' textPosition='left'>
           Complemento:
