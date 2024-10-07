@@ -15,22 +15,26 @@ import { useSearchParams } from 'next/navigation'
 
 export type FormSubpages = 'personalData' | 'enterpriseForm' | 'corpAddressForm'
 
-export function RegisterInfosPage() {
+type RegisterInfosPageProps = {
+  name: string
+  surname: string
+  email: string
+  phone: string
+}
+
+export function RegisterInfosPage(props: RegisterInfosPageProps) {
+  const { email, name, phone, surname } = props
   const [formInputs, setFormInputs] = useState<FormSubpages>('personalData')
-  const searchParams = useSearchParams()
-  const nameValue = searchParams.get('nome')
-  const surnameValue = searchParams.get('sobrenome')
-  const emailValue = searchParams.get('email')
-  const phoneValue = searchParams.get('tel')
+
 
   const formik = useFormik({
     initialValues: {
-      name: nameValue,
-      surname: surnameValue,
+      name: name,
+      surname: surname,
       cpf: '',
       role: '',
-      email: emailValue,
-      phone: phoneValue,
+      email: email,
+      phone: phone,
       password: '',
       corpName: '',
       fantasyName: '',
