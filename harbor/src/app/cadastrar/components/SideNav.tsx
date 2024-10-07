@@ -1,9 +1,15 @@
-/* eslint-disable react/prop-types */
+import { ReactNode } from 'react'
 import { Heading } from '../../../components/Heading/Heading'
 
-export function SideNav({ children }: any) {
+type SideNavProps = {
+  children: ReactNode
+}
+
+export function SideNav(props: SideNavProps) {
+  const { children } = props
+
   return (
-    <div className='flex flex-col bg-white p-4 items-start border-r border-black h-full max-w-96 gap-6'>
+    <div className='flex flex-col bg-white py-10 px-4 items-start border-r border-black h-full max-w-96 gap-6'>
       <Heading
         size={5}
         color='black'

@@ -87,7 +87,6 @@ export function PedidoContent(props: PedidoContentProps) {
             console.error('Erro:', errorData.message)
           }
         })
-      console.log('Pedido:', JSON.stringify(createOrderData))
       } catch (error: any) {
         throw new Error(error)
       }

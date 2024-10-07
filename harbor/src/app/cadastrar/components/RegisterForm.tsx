@@ -22,16 +22,18 @@ export default function RegisterForm() {
   const phoneValue = searchParams.get('tel')
 
   async function handleCEP(cepNumber: string) {
-    const getCEP = axios.get('http://localhost:8080/enderecos/busca', {
-      params: {
-        cep: cepNumber
-      }
-    }).then((response) => {
+    const formatedCep = cepNumber.replace(/[^\d]/g, '')
+    const getCEP = await axios.get(`https://viacep.com.br/ws/${formatedCep}/json/`).then((response) => {
       return response.data
     }).catch(() => {
       return null
     })
-    return await getCEP
+
+    if (getCEP) {
+      return getCEP
+    }
+
+    return null
   }
 
 

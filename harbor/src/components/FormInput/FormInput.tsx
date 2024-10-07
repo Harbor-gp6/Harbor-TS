@@ -1,5 +1,5 @@
 import clsx, { ClassArray, ClassValue } from 'clsx'
-type InputType = 'email' | 'text' | 'number' | 'password'
+type InputType = 'email' | 'text' | 'number' | 'password' | 'time'
 
 type FormInputProps = {
   value?: string
@@ -43,6 +43,7 @@ export function FormInput ({
       className={clsx(
         'rounded-xl',
         'p-3',
+        'text-black',
         ...(Array.isArray(className) ? className : [className])
       )}
     />
