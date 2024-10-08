@@ -4,6 +4,8 @@ import { Container } from '@/components/Container/Container'
 import { useAuth } from '@/contexts/auth-context'
 import { DownloadReportEmployee } from '@/lib/download-employee-report'
 import { DownloadReport } from '@/lib/download-report'
+import { DownloadReportRating } from '@/lib/download-report-rating'
+import { Button } from 'flowbite-react'
 import { useState } from 'react'
 
 export function ReportMainContent() {
@@ -51,15 +53,15 @@ export function ReportMainContent() {
       <div className="flex flex-col gap-2">
         {/* <p className="text-gray-800">Faturamento Bruto</p>
             <p className="text-gray-800">Ticket Médio</p> */}
-        <button onClick={async () => await DownloadReport(startDate, endDate, user.token)}>
-          <p className="text-gray-800">Produtos mais consumidos</p>
-        </button>
-        <button onClick={async () => await DownloadReportEmployee(startDate, endDate, user.token)}>
-          <p className="text-gray-800">Pedidos por prestador</p>
-        </button>
-        <button onClick={async () => await DownloadReport(startDate, endDate, user.token)}>
-          <p className="text-gray-800">Avaliação por prestador</p>
-        </button>
+        <Button className='bg-blue hover:bg-blueEnd' onClick={async () => await DownloadReportEmployee(startDate, endDate, user.token)}>
+          <p className="text-white">Pedidos por prestador</p>
+        </Button>
+        <Button className='bg-blue hover:bg-blueEnd' onClick={async () => await DownloadReportRating(startDate, endDate, user.token)}>
+          <p className="text-white">Avaliação por prestador</p>
+        </Button>
+        <Button className='bg-blue hover:bg-blueEnd' onClick={async () => await DownloadReport(startDate, endDate, user.token)}>
+          <p className="text-white">Produtos mais consumidos</p>
+        </Button>
         {/* <p className="text-gray-800">Receita por Tipo de Serviço</p>
             <p className="text-gray-800">Receita por Produto Consumido</p>
             <p className="text-gray-800">Crescimento da Receita</p>
