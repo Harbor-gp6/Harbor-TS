@@ -1,5 +1,4 @@
-export type ServicoListagemDto = {
-  id: number
+export type ServicoCriacaoDto = {
   descricaoServico: string
   servicoEspecial: boolean
   tempoMedioEmMinutos: number

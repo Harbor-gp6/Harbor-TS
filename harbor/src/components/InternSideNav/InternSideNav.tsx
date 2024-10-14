@@ -1,7 +1,7 @@
 'use client'
 
 import { Sidebar } from "flowbite-react"
-import { HiChartPie, HiInbox, HiUser, HiViewBoards } from "react-icons/hi"
+import { HiChartPie, HiInbox, HiUser, HiViewBoards, HiBriefcase } from "react-icons/hi"
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
 
@@ -53,6 +53,13 @@ export function InternSideNav(props: InternSideNavProps) {
                 pathname === `/dashboard/${id}/prestadores` && ['bg-blue text-white']
               )}>
                 Prestadores
+              </Sidebar.Item>
+              <Sidebar.Item href={`/dashboard/${id}/servicos`} icon={HiBriefcase} className={clsx(
+                'hover:bg-blueEnd',
+                'hover:text-white',
+                pathname === `/dashboard/${id}/servicos` && ['bg-blue text-white']
+              )}>
+                Serviços
               </Sidebar.Item>
             </Sidebar.ItemGroup>
           </Sidebar.Items>
