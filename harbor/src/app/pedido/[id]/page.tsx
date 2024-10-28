@@ -26,28 +26,5 @@ export default async function Pedido(props: PedidoProps) {
         products={[]}
       />
     </Container>
-
-    /* {openFormModal && (
-      <ModalFormCliente
-        open={openFormModal}
-        onClose={() => setOpenFormModal(false)}
-        totalTime={''}
-        totalValue={''}
-        onBack={function (): void {
-          throw new Error('Function not implemented.')
-        }}
-        nameValue={''}
-        surnameValue={''}
-        cpfValue={''}
-        phoneValue={''}
-        emailValue={''}
-        onChange={function (): void {
-          throw new Error('Function not implemented.')
-        }}
-        onSubmit={function (): void {
-          throw new Error('Function not implemented.')
-        }}
-        paymentValue={''} />
-    )} */
   )
 }
