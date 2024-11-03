@@ -35,7 +35,7 @@ export default async function DashboardEmployeesPage() {
             name={prestador.nome}
             lastName={prestador.sobrenome}
             role={prestador.cargo}
-            imgSrc="https://via.placeholder.com/50"
+            imgSrc={JSON.parse(prestador.foto).novaFoto || "https://via.placeholder.com/50"}
           />
         ))}
       </div>

@@ -62,7 +62,7 @@ export function ChartCustom({ pedidosList }: ChartCustomProps) {
 
   // Iterar sobre o array de serviços
   for (const servico of pedidosList) {
-    const nomeServico = servico.pedidoPrestador ? servico.pedidoPrestador[0]?.servico.descricaoServico : ''
+    const nomeServico = servico.pedidoPrestador ? servico.pedidoPrestador[0]?.descricaoServico : ''
     // Se a hora já existe no objeto, incrementar a contagem, caso contrário, iniciar com 1
     if (servicosObj[nomeServico]) {
       servicosObj[nomeServico]++

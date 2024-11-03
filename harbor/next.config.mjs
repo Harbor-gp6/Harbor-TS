@@ -4,6 +4,7 @@ const nextConfig = {
     domains: [
       'fakeimg.pl',
       'via.placeholder.com',
+      'cdn.cosmicjs.com'
     ],
   },
 }

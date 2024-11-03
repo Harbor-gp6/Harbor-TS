@@ -1,10 +1,10 @@
 import { ClassArray, ClassValue, clsx } from 'clsx'
 
-type InputType = 'email' | 'text' | 'number' | 'password'
+type InputType = 'email' | 'text' | 'number' | 'password' | 'file'
 
 type InputProps = {
-  value?: string
-  onChange?: () => void
+  value?: any
+  onChange?: (value?: any) => void
   name?: string
   className?: ClassValue | ClassArray
   type?: InputType

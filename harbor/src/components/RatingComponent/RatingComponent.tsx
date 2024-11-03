@@ -30,7 +30,7 @@ export function RatingComponent(props: RatingComponentProps) {
   return (
     <div className="flex flex-col items-center p-6 max-w-72 bg-white rounded-lg shadow-md">
       <Image
-        src={employee.prestador?.foto ?? 'https://fakeimg.pl/100x100/cccccc/909090'}
+        src={JSON.parse(employee.prestador.foto).novaFoto ?? 'https://fakeimg.pl/100x100/cccccc/909090'}
         alt={`Foto de ${employee.prestador.nome} ${employee.prestador.sobrenome}`}
         width={100}
         height={100}

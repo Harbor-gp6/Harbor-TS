@@ -92,7 +92,6 @@ export function RegisterInfosPage(props: RegisterInfosPageProps) {
         })
         .catch((err) => {
           alert("Erro ao realizar cadastro: " + err)
-          console.log('Erro ao criar conta:', createAccount)
         })
     }
   })
