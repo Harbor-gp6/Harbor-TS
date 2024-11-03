@@ -34,6 +34,8 @@ type ServiceSelectProps = {
   onSelectEmployee: (value: any) => void
   onSelectPayment: (value: string) => void
   onDateTimeSelect: (formattedDateTime: string) => void
+  enterpriseBanner: string
+  enterpriseLogo: string
 }
 
 export function ServiceSelect(props: ServiceSelectProps) {
@@ -57,7 +59,9 @@ export function ServiceSelect(props: ServiceSelectProps) {
     onSelectPayment,
     totalTime,
     onSelectEmployee,
-    employees
+    employees,
+    enterpriseBanner,
+    enterpriseLogo
   } = props
 
   const [openModal, setOpenModal] = useState(false)
@@ -65,7 +69,10 @@ export function ServiceSelect(props: ServiceSelectProps) {
   return (
     <div className="max-w-3xl w-full min-h-full">
       <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
-        <CustomCarousel />
+        <CustomCarousel
+          banner={enterpriseBanner || ''}
+          logo={enterpriseLogo || ''}
+        />
       </div>
 
       <div className="flex justify-around pt-6">

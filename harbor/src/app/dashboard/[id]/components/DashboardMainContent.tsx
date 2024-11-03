@@ -36,7 +36,7 @@ export async function DashboardMainContent(props: DashboardMainContentProps) {
 
   // Iterar sobre o array de serviços
   for (const pedido of pedidosAtendidos) {
-    const nomePrestador = pedido.pedidoPrestador ? pedido.pedidoPrestador[0]?.prestador.nome : ''
+    const nomePrestador = pedido.pedidoPrestador ? pedido.pedidoPrestador[0]?.prestador?.nome : ''
     // Se a hora já existe no objeto, incrementar a contagem, caso contrário, iniciar com 1
     if (prestadorObj[nomePrestador]) {
       prestadorObj[nomePrestador]++

@@ -21,10 +21,12 @@ type PedidoContentProps = {
   services: ServicoListagemDto[]
   products: ProdutoListagemDto[]
   enterprise: EmpresaListagemDto
+  enterpriseBanner: string
+  enterpriseLogo: string
 }
 
 export function PedidoContent(props: PedidoContentProps) {
-  const { employees, services, enterprise, products } = props
+  const { employees, services, enterprise, products, enterpriseBanner, enterpriseLogo } = props
   const [page, setPage] = useState<'funcionariosPage' | 'servicosPage'>('servicosPage')
   const [employee, setEmployee] = useState<PrestadorListagemDto | null>(null)
   const [employeeId, setEmployeeId] = useState<number | null>(null)
@@ -163,6 +165,8 @@ export function PedidoContent(props: PedidoContentProps) {
           employees={employees}
           products={products}
           totalTime={calculatedTime()}
+          enterpriseBanner={enterpriseBanner}
+          enterpriseLogo={enterpriseLogo}
         />
       )}
     </div>

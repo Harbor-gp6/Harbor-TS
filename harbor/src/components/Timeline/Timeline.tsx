@@ -10,7 +10,6 @@ type TimelineCustomProps = {
 }
 
 export function TimelineCustom({ pedidosList }: TimelineCustomProps) {
-
   return (
     <Timeline>
       <h1 className="text-xl pb-5 flex justify-center">
@@ -35,7 +34,7 @@ export function TimelineCustom({ pedidosList }: TimelineCustomProps) {
             <Timeline.Body>
               {pedido.pedidoPrestador.map((servico: any) => (
                 <>
-                  {servico.servico.descricaoServico}
+                  {servico.descricaoServico}
                 </>
               ))}
             </Timeline.Body>
