@@ -28,12 +28,14 @@ export function EmployeeCard(props: EmployeeCardProps) {
           </div>
         </div>
 
-        {/* <button
+        {/* <div className='flex flex-col lg:flex-row gap-4'>
+          <button
           onClick={onInactivate}
           className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-red-400 transition"
         >
           Inativar
-        </button> */}
+        </button>
+        </div> */}
       </div>
     </div>
   )

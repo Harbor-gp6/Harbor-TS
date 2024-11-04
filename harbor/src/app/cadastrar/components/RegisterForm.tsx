@@ -12,6 +12,7 @@ import { useFormik } from 'formik'
 import axios from 'axios'
 import { Button, Progress } from 'flowbite-react'
 import Image from 'next/image'
+import Swal from 'sweetalert2'
 
 export default function RegisterForm() {
   const [formInputs, setFormInputs] = useState('personalData')
@@ -96,16 +97,19 @@ export default function RegisterForm() {
             complemento: values.corpComplement
           }
         }
-      }, {
-        headers: {
-          Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb2huQGRvZS5jb20iLCJpYXQiOjE3MTQ2MDM5MjcsImV4cCI6MTcxODIwMzkyN30.H64q4lwNVYtB3j0ccj7BJXPzVYhgKs5Hi5MIHU8eKJgapCVk44Or89aQVSU7b16UtpZJsDt-JrmoR_yPhbQoPQ'
-        }
       }).then(() => {
-        alert("Cadastro realizado com sucesso")
+        Swal.fire({
+          icon: 'success',
+          title: 'Cadastro realizado com sucesso',
+          showConfirmButton: false
+        })
         window.location.href = '/login'
         resetForm()
       }).catch((err) => {
-        alert(err)
+        Swal.fire({
+          icon: 'error',
+          title: 'Houve um erro ao cadastrar'
+        })
       })
     }
   })

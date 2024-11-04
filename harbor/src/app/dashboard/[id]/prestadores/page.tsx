@@ -5,6 +5,7 @@ import { GetEmployeesByEnterpriseId } from '@/lib/get-employees-by-enterprise-id
 import { PrestadorListagemDto } from '@/types/prestador/PrestadorListagemDto'
 import { SignInResult } from '@/types/SignInResult'
 import { cookies } from 'next/headers'
+import { CreateEmployeeForm } from './components/CreateEmployeeForm'
 
 export default async function DashboardEmployeesPage() {
   const userCookies = cookies()
@@ -17,6 +18,8 @@ export default async function DashboardEmployeesPage() {
       className="flex flex-col gap-6 w-full items-center"
       maxWidth='md'
     >
+      <CreateEmployeeForm />
+
       {employees.length === 0 && (
         <div className='flex items-center justify-center w-full h-full'>
           <Typography
@@ -35,7 +38,7 @@ export default async function DashboardEmployeesPage() {
             name={prestador.nome}
             lastName={prestador.sobrenome}
             role={prestador.cargo}
-            imgSrc={JSON.parse(prestador.foto).novaFoto || "https://via.placeholder.com/50"}
+            imgSrc={JSON.parse(prestador.foto)?.novaFoto ?? "https://via.placeholder.com/50"}
           />
         ))}
       </div>

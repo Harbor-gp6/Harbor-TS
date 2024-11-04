@@ -14,6 +14,7 @@ import { PedidoProdutoV2Dto } from '@/types/pedidoV2/PedidoProdutoV2Dto'
 import { PedidoPrestadorDto } from '@/types/pedidoV2/PedidoPrestadorDto'
 import { useRouter } from 'next/navigation'
 import { ProdutoListagemDto } from '@/types/produto/ProdutoListagemDto'
+import Swal from 'sweetalert2'
 
 type PedidoContentProps = {
   enterpriseId: string
@@ -72,19 +73,32 @@ export function PedidoContent(props: PedidoContentProps) {
 
       try {
        await axios.post('http://localhost:8080/pedidos/criarPedidoV2', createOrderData).then(() => {
-          alert("Pedido realizado com sucesso")
+        Swal.fire({
+          icon: 'success',
+          title: 'Pedido realizado com sucesso',
+          showConfirmButton: false
+        })
           setSelectedServices([])
           route.push('/')
           resetForm()
         }).catch((error: AxiosError) => {
           const errorData: any = error.response?.data
           if (errorData.status === 500) {
-            alert('Não foi possível cadastrar seu pedido, tente novamente mais tarde.')
+            Swal.fire({
+              icon: 'error',
+              title: 'Não foi possível cadastrar seu pedido, tente novamente mais tarde.'
+            })
             console.error(errorData)
           } else if (errorData.status === 401) {
-            alert('Você não está autorizado a fazer essa ação')
+            Swal.fire({
+              icon: 'warning',
+              title: 'Você não está autorizado a fazer essa ação'
+            })
           } else if (errorData.status === 400) {
-            alert('Há alguma informação incorreta')
+            Swal.fire({
+              icon: 'error',
+              title: 'Há alguma informação incorreta'
+            })
           } else {
             console.error('Erro:', errorData.message)
           }

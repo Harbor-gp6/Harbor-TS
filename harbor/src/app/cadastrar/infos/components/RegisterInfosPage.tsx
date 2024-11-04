@@ -12,6 +12,7 @@ import { Typography } from '@/components/Typography/Typography'
 import { EnterpriseDataFormInputs } from './EnterpriseDataFormInputs'
 import AddressDataFormInputs from './AddressDataFormInputs'
 import { useSearchParams } from 'next/navigation'
+import Swal from 'sweetalert2'
 
 export type FormSubpages = 'personalData' | 'enterpriseForm' | 'corpAddressForm'
 
@@ -86,12 +87,19 @@ export function RegisterInfosPage(props: RegisterInfosPageProps) {
 
       await axios.post('http://localhost:8080/usuarios', createAccount)
         .then(() => {
-          alert("Cadastro realizado com sucesso")
+          Swal.fire({
+            icon: 'success',
+            title: 'Cadastro realizado com sucesso',
+            showConfirmButton: false
+          })
           window.location.href = '/login'
           resetForm()
         })
         .catch((err) => {
-          alert("Erro ao realizar cadastro: " + err)
+          Swal.fire({
+            icon: 'error',
+            title: 'Houve um erro ao cadastrar'
+          })
         })
     }
   })

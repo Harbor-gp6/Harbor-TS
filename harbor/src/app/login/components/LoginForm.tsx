@@ -8,6 +8,7 @@ import * as yup from 'yup'
 import { useAuth } from '@/contexts/auth-context'
 import { useRouter } from 'next/navigation'
 import { SignInResult } from '@/types/SignInResult'
+import Swal from 'sweetalert2'
 
 export function LoginForm() {
   const { login } = useAuth()
@@ -30,11 +31,18 @@ export function LoginForm() {
 
         if (user) {
           const userInfos = user as SignInResult
-          alert('login Realizado')
+          Swal.fire({
+            icon: 'success',
+            title: 'Login realizado com sucesso',
+            showConfirmButton: false
+          })
           router.push(`/dashboard/${userInfos.userId}`)
           resetForm()
         } else {
-          alert('E-mail e/ou senha incorretos')
+          Swal.fire({
+            icon: 'error',
+            title: 'E-mail e/ou Senha incorretos'
+          })
           resetForm()
         }
       } catch (error: any) {
