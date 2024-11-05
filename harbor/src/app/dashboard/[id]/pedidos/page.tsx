@@ -34,10 +34,10 @@ export default async function DashboardOrdersPage() {
         <ServiceCard
           key={index}
           id={pedido.id}
-          service={pedido.pedidoPrestador?.map((prestador: PedidoPrestador) => prestador.servico?.descricaoServico || '')}
-          provider={pedido.pedidoPrestador?.map((prestador: PedidoPrestador) => `${prestador.prestador?.nome || ''} ${prestador.prestador?.sobrenome || ''}`)}
+          service={pedido.pedidoPrestador?.map((prestador: PedidoPrestador) => prestador?.descricaoServico || '')}
+          provider={pedido.pedidoPrestador?.map((prestador: PedidoPrestador) => `${prestador?.nomePrestador || ''}`)}
           time={format(new Date(pedido.dataAgendamento).toISOString(), 'PP')}
-          client={`${pedido.cliente?.nome} ${pedido.cliente?.sobrenome}`}
+          client={`${pedido.nomeCliente}`}
           price={new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(pedido.totalPedido)}
           payment={pedido.formaPagamentoEnum}
         />
