@@ -53,6 +53,7 @@ export function InterNav() {
         userSurname={employee.sobrenome}
         userEmail={employee.email}
         userRole={employee.cargo}
+        userId={employeeId}
       />
     </>
   )
