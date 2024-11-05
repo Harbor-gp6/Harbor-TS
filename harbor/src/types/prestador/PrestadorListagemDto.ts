@@ -6,6 +6,7 @@ export type PrestadorListagemDto = {
   foto: string
   nomePrestador: string
   nome: string
+  descricaoServico: string
   sobrenome: string
   telefone: string
   cpf: string
