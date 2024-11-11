@@ -10,9 +10,10 @@ type ServiceCardProps = {
   client: string
   price: string
   payment: string
+  orderCode: string
 }
 
-export function ServiceCard({ id, service, provider, time, client, price, payment }: ServiceCardProps) {
+export function ServiceCard({ id, service, provider, time, client, price, payment, orderCode }: ServiceCardProps) {
 
   const { user } = useAuth()
 
@@ -20,7 +21,7 @@ export function ServiceCard({ id, service, provider, time, client, price, paymen
     <div className="space-y-4 p-6 bg-gray-800 rounded-lg shadow-lg text-white transition-transform transform hover:scale-105 w-full">
       <div className="flex justify-between items-center">
         <p className="text-sm font-bold">Pedido ID: {id}</p>
-        <button onClick={async () => await FinishOrder(id, user.token)} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-green-400 transition">
+        <button onClick={async () => await FinishOrder(orderCode, user.token)} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-green-400 transition">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
           </svg>

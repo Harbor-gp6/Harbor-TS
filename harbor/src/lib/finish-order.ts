@@ -1,8 +1,8 @@
 import axios, { AxiosError } from 'axios'
 
-export async function FinishOrder(id: number, token: string) {
+export async function FinishOrder(code: string, token: string) {
   await axios.post(
-    `http://localhost:8080/pedidos/finalizarPedido/${id}`,
+    `http://localhost:8080/pedidos/finalizarPedido/${code}`,
     {}, // o corpo vazio da requisição POST
     {
       headers: {
