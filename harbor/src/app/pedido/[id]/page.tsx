@@ -16,14 +16,11 @@ type PedidoProps = {
 
 export default async function Pedido(props: PedidoProps) {
   const enterpriseId = props.params.id
-  const userCookies = cookies()
-  const userInfos = userCookies.get('user')
-  const user: SignInResult = JSON.parse(userInfos?.value || '')
   const enterprise = await GetEnterpriseById(enterpriseId)
   const employees = await GetEmployeesByEnterpriseId(enterpriseId)
   const services = await GetServicesByEnterpriseId(enterpriseId)
-  const enterpriseBanner = await GetEnterpriseBanner(user.token)
-  const enterpriseLogo = await GetEnterpriseLogo(user.token)
+  const enterpriseBanner = await GetEnterpriseBanner(enterpriseId)
+  const enterpriseLogo = await GetEnterpriseLogo(enterpriseId)
 
   return (
     <Container className="w-screen flex flex-col justify-center text-center items-center pt-6 pb-4">

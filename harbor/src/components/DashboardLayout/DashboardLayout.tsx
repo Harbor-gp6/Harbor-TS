@@ -28,7 +28,7 @@ export async function DashboardLayout(props: DashboardLayoutProps) {
         userEmail={employee.email}
         userRole={employee.cargo}
         userId={id}
-        userImageUrl={JSON.parse(employee.foto).novaFoto}
+        userImageUrl={JSON.parse(employee.foto)?.novaFoto}
       />
       <div className='w-screen min-h-screen flex overflow-x-hidden justify-between'>
         <InternSideNav id={id} />

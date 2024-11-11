@@ -33,13 +33,14 @@ export default async function DashboardOrdersPage() {
       {pedidosPendentes && pedidosPendentes.length > 0 && pedidosPendentes.map((pedido: PedidoListagemDto, index: any) => (
         <ServiceCard
           key={index}
-          id={pedido.id}
+          id={pedido.idPedido}
           service={pedido.pedidoPrestador?.map((prestador: PedidoPrestador) => prestador?.descricaoServico || '')}
           provider={pedido.pedidoPrestador?.map((prestador: PedidoPrestador) => `${prestador?.nomePrestador || ''}`)}
           time={format(new Date(pedido.dataAgendamento).toISOString(), 'PP')}
           client={`${pedido.nomeCliente}`}
           price={new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(pedido.totalPedido)}
           payment={pedido.formaPagamentoEnum}
+          orderCode={pedido.codigoPedido}
         />
       ))}
     </Container>
