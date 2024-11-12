@@ -7,6 +7,7 @@ const nextConfig = {
       'cdn.cosmicjs.com'
     ],
   },
-}
+  output: 'standalone',
+};
 
-export default nextConfig
+export default nextConfig;
