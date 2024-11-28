@@ -18,10 +18,10 @@ jobs:
           node-version: '20'
 
       - name: Install dependences
-        run: npm install
+        run: cd Harbor-TS && npm install
 
       - name: Build next
-        run: npm run build
+        run: cd Harbor-TS && npm run build
 
       - name: Run aplication
-        run: nohup npm start > output.log 2>&1 &
+        run: cd Harbor-TS && nohup npm start > output.log 2>&1 &
