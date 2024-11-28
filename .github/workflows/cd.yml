@@ -1,0 +1,22 @@
+name: "cd-frontend"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependences
+        run: npm install
+
+      - name: Build next
+        run: npm run build
+
+      - name: Run aplication
+        run: nohup npm start > output.log 2>&1 &
