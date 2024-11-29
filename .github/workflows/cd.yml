@@ -17,6 +17,13 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Find Process and Send SIGINT
+        run: |
+            PID=$(ps aux | grep 'npm start' | grep -v grep | awk '{print $2}')
+            if [ -n "$PID" ]; then
+              kill -2 $PID
+            fi
+
       - name: Install dependences
         run: npm install
 
