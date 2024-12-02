@@ -8,7 +8,7 @@ export async function GetDailyGrossRevenue(token: string) {
 
   const dataAtualFormatada = `${ano}-${mes}-${dia}`
 
-    const response = await axios.get(`http://localhost:8080/relatorios/faturamento-empresa?dataInicio=${dataAtualFormatada}&dataFim=${dataAtualFormatada}`, {
+    const response = await axios.get(`http://100.29.19.154/api/relatorios/faturamento-empresa?dataInicio=${dataAtualFormatada}&dataFim=${dataAtualFormatada}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

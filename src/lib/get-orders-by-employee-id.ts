@@ -2,7 +2,7 @@ import { PedidoListagemDto } from '@/types/pedido/PedidoListagemDto'
 import axios from 'axios'
 
 export async function GetOrdersByEmployeeId (token: string) {
-  const response = await axios.get('http://localhost:8080/pedidos/pedidosAbertos', {
+  const response = await axios.get('http://100.29.19.154/api/pedidos/pedidosAbertos', {
     headers: {
       Authorization: `Bearer ${token}`
     }

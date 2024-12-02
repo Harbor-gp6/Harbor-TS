@@ -39,7 +39,7 @@ export function AuthProvider (props: AuthProviderProps) {
         senha: password
       }
 
-      const response = await axios.post('http://localhost:8080/usuarios/login', loginCommandData).then((response) => {
+      const response = await axios.post('http://100.29.19.154/api/usuarios/login', loginCommandData).then((response) => {
         const result = response.data
 
         const userInfos: SignInResult = {
