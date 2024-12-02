@@ -8,7 +8,7 @@ export async function AddEnterpriseBanner (image: File, token: string) {
   })
 
   if (data) {
-    const updatedImage =  await axios.patch(`http://localhost:8080/empresas/banner`, {
+    const updatedImage =  await axios.patch(`http://100.29.19.154/api/empresas/banner`, {
       novaFoto: data.media.url
     }, {
       headers: {

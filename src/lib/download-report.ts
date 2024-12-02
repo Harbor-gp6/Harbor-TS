@@ -12,7 +12,7 @@ export async function DownloadReport(startDate: string, endDate: string, token: 
     }
   })
 
-  await axios.get(`http://localhost:8080/relatorios/PDF/produtos-mais-consumidos?dataInicio=${startDate}&dataFim=${endDate}`, {
+  await axios.get(`http://100.29.19.154/api/relatorios/PDF/produtos-mais-consumidos?dataInicio=${startDate}&dataFim=${endDate}`, {
     headers: {
       Authorization: `Bearer ${token}`
     },

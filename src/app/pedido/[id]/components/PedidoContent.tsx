@@ -72,7 +72,7 @@ export function PedidoContent(props: PedidoContentProps) {
       }
 
       try {
-       await axios.post('http://localhost:8080/pedidos/criarPedidoV2', createOrderData).then(() => {
+       await axios.post('http://100.29.19.154/api/pedidos/criarPedidoV2', createOrderData).then(() => {
         Swal.fire({
           icon: 'success',
           title: 'Pedido realizado com sucesso',

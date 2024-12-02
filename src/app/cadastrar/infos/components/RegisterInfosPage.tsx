@@ -85,7 +85,7 @@ export function RegisterInfosPage(props: RegisterInfosPageProps) {
         }
       }
 
-      await axios.post('http://localhost:8080/usuarios', createAccount)
+      await axios.post('http://100.29.19.154/api/usuarios', createAccount)
         .then(() => {
           Swal.fire({
             icon: 'success',
