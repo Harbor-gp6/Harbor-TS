@@ -29,13 +29,6 @@ export function NavBarMainContent({
   const { logout } = useAuth()
   const router = useRouter()
 
-  const handleModalOpen = () => {
-    setIsModalOpen(true)
-  }
-
-  const handleModalClose = () => {
-    setIsModalOpen(false)
-  }
 
   return (
     <>
@@ -98,7 +91,7 @@ export function NavBarMainContent({
         </div>
       </Navbar>
 
-      <Modal show={isModalOpen} onClose={handleModalClose}>
+      <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <Modal.Header className="flex flex-col items-center">
           <h3 className="text-lg font-medium text-gray-900">Selecione o período</h3>
         </Modal.Header>
@@ -106,7 +99,7 @@ export function NavBarMainContent({
           {/* Conteúdo do Modal */}
         </Modal.Body>
         <Modal.Footer>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow hover:bg-blue-600 transition duration-300" onClick={handleModalClose}>
+          <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow hover:bg-blue-600 transition duration-300" onClick={() => setIsModalOpen(false)}>
             Fechar
           </button>
         </Modal.Footer>
