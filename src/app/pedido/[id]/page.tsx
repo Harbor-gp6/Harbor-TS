@@ -22,6 +22,8 @@ export default async function Pedido(props: PedidoProps) {
   const enterpriseBanner = await GetEnterpriseBanner(enterpriseId)
   const enterpriseLogo = await GetEnterpriseLogo(enterpriseId)
 
+  console.log('Empresa:', enterprise)
+
   return (
     <Container className="w-screen flex flex-col justify-center text-center items-center pt-6 pb-4">
       <PedidoContent
@@ -30,8 +32,8 @@ export default async function Pedido(props: PedidoProps) {
         services={services}
         enterprise={enterprise}
         products={[]}
-        enterpriseBanner={enterpriseBanner.novaFoto || ''}
-        enterpriseLogo={enterpriseLogo.novaFoto || ''}
+        enterpriseBanner={enterpriseBanner?.novaFoto || ''}
+        enterpriseLogo={enterpriseLogo?.novaFoto || ''}
       />
     </Container>
   )
