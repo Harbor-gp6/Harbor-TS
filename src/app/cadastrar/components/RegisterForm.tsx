@@ -73,7 +73,7 @@ export default function RegisterForm() {
       corpComplement: ''
     },
     onSubmit: (values, { resetForm }) => {
-      axios.post('http://100.29.19.154/api/usuarios', {
+      axios.post('http://100.28.169.213/api/usuarios', {
         nome: values.name,
         sobrenome: values.surname,
         telefone: values.phone,

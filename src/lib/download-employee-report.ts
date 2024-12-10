@@ -11,7 +11,7 @@ export async function DownloadReportEmployee (startDate: string, endDate: string
     }
   })
 
-  await axios.get(`http://100.29.19.154/api/relatorios/PDF/pedidos-atendidos-por-prestador?dataInicio=${startDate}&dataFim=${endDate}`, {
+  await axios.get(`http://100.28.169.213/api/relatorios/PDF/pedidos-atendidos-por-prestador?dataInicio=${startDate}&dataFim=${endDate}`, {
     headers: {
       Authorization: `Bearer ${token}`
     },

@@ -15,7 +15,7 @@ export async function GetMonthlyGrossRevenue(token: string) {
     dataFuturaFormatada = `${novoAno}-${mesFuturo}-01`
   }
 
-  const response = await axios.get(`http://100.29.19.154/api/relatorios/faturamento-empresa?dataInicio=${dataAtualFormatada}&dataFim=${dataFuturaFormatada}`, {
+  const response = await axios.get(`http://100.28.169.213/api/relatorios/faturamento-empresa?dataInicio=${dataAtualFormatada}&dataFim=${dataFuturaFormatada}`, {
     headers: {
       Authorization: `Bearer ${token}`
     }

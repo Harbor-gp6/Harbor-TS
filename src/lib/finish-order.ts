@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios'
 
 export async function FinishOrder(code: string, token: string) {
   await axios.post(
-    `http://100.29.19.154/api/pedidos/finalizarPedido/${code}`,
+    `http://100.28.169.213/api/pedidos/finalizarPedido/${code}`,
     {}, // o corpo vazio da requisição POST
     {
       headers: {

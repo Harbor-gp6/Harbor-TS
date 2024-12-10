@@ -22,7 +22,7 @@ export function InterNav() {
 
     async function fetchEmployee() {
       try {
-        const response = await axios.get(`http://100.29.19.154/api/usuarios/${employeeId}`, {
+        const response = await axios.get(`http://100.28.169.213/api/usuarios/${employeeId}`, {
           headers: {
             Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb2huQGRvZS5jb20iLCJpYXQiOjE3MjM1ODk3ODUsImV4cCI6MTcyNzE4OTc4NX0.aCQKUjA0MAIuBawFGxwyU40AycZhTnk6UUrEkQOIVusvh0ykH24HOPr_CAA-7LIB-CX7TxA13Ks3wSAfxLz7Pg'
           }

@@ -8,7 +8,7 @@ export async function AddImage (image: File, employeeId: number | string, token:
   })
 
   if (data) {
-    const updatedImage =  await axios.patch(`http://100.29.19.154/api/usuarios/foto/${employeeId}`, {
+    const updatedImage =  await axios.patch(`http://100.28.169.213/api/usuarios/foto/${employeeId}`, {
       novaFoto: data.media.url
     }, {
       headers: {

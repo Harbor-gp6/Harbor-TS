@@ -2,7 +2,7 @@ import { PedidoListagemDto } from '@/types/pedido/PedidoListagemDto'
 import axios from 'axios'
 
 export async function GetOrderByCode (orderCode: string) {
-  const response = await axios.get(`http://100.29.19.154/api/pedidos/${orderCode}`)
+  const response = await axios.get(`http://100.28.169.213/api/pedidos/${orderCode}`)
 
 
   if (response.status === 200) {
