@@ -1,7 +1,7 @@
-import { Button } from 'flowbite-react'
 import { Container } from '../Container/Container'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Button } from '../Button'
 
 export default function Header() {
   return (
@@ -25,21 +25,20 @@ export default function Header() {
 
           <div className='flex gap-4 items-center'>
             <Button
-              pill
-              color="gray"
               href='/login'
-              className='bg-transparent border-white text-center text-white flex items-center justify-center text-base enabled:hover:text-blue'
+              variant='outlined'
+              color='white'
+              textColor='white'
+              className='hover:bg-white hover:text-blue transition duration-75 ease-in-out'
             >
-              <span className='p-0'>
-                Login
-              </span>
+              Login
             </Button>
 
             <Button
-              pill
-              color="light"
+              color='white'
               href='/cadastrar'
-              className='text-blue hidden lg:flex items-center justify-center text-center text-base enabled:hover:bg-white'
+              textColor='blue'
+              className='hover:shadow-md hover:shadow-white transition delay-100 duration-75 ease-in-out'
             >
               Cadastre-se
             </Button>
