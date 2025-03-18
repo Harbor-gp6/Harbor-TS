@@ -14,7 +14,7 @@ export function OrbitalSection() {
             maxWidth="sm"
         >
             <Heading
-                color="black"
+                color="blueEnd"
                 size={4}
             >
                 O que você terá sendo nosso cliente:

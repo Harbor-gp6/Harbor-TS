@@ -1,7 +1,7 @@
 import { Heading } from '../../../components/Heading/Heading'
-import { Container } from '@mui/material'
 import advantagesInfos from '@/../assets/advantagesInfos.json'
 import { Typography } from '../../../components/Typography/Typography'
+import { Container } from '@/components/Container/Container'
 
 
 export default function AdvantagesSection() {
@@ -10,7 +10,7 @@ export default function AdvantagesSection() {
       <Container maxWidth="lg" >
         <div className='w-full flex flex-col gap-14 items-center justify-center'>
           <Heading
-            color="black"
+            color="blueEnd"
             className="text-center"
             size={3}
           >
@@ -21,16 +21,16 @@ export default function AdvantagesSection() {
             {advantagesInfos.map((advantage, index) => (
               <div
                 key={index}
-                className={`flex flex-col items-center justify-center gap-2 w-72 p-4 ${advantage.hasBorder ? 'border-b lg:border-r lg:border-b-0 border-black' : 'border-none'}`}
+                className={`flex flex-col items-center justify-center gap-2 w-72 p-4 ${advantage.hasBorder ? 'border-b lg:border-r lg:border-b-0 border-body' : 'border-none'}`}
               >
                 <Heading
-                  color="black"
+                  color="blue"
                 >
                   {advantage.advantageValue}
                 </Heading>
 
                 <Typography
-                  color="black"
+                  color="body"
                   className="whitespace-nowrap"
                 >
                   {advantage.advantageDescription}
