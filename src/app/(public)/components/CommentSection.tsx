@@ -17,10 +17,19 @@ export function CommentSection() {
               <Heading
                 size={3}
                 color='white'
-                className='text-left'
+                className='text-left hidden lg:block'
               >
                 {'"Por muito tempo me senti perdido com o meu negócio. Sinto que a Harbor me permite trabalhar de maneira mais assertiva e inteligente"'}
               </Heading>
+
+              <Heading
+                size={4}
+                color='white'
+                className='text-center lg:hidden block'
+              >
+                {'"Por muito tempo me senti perdido com o meu negócio. Sinto que a Harbor me permite trabalhar de maneira mais assertiva e inteligente"'}
+              </Heading>
+
               <Typography
                 color='white'
                 textSize='lg'

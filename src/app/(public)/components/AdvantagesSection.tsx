@@ -11,8 +11,16 @@ export default function AdvantagesSection() {
         <div className='w-full flex flex-col gap-14 items-center justify-center'>
           <Heading
             color="blueEnd"
-            className="text-center"
+            className="text-center hidden lg:block"
             size={3}
+          >
+            Acreditamos na transformação financeira para prestadores de serviço.
+          </Heading>
+
+          <Heading
+            color="blueEnd"
+            className="text-center lg:hidden block"
+            size={4}
           >
             Acreditamos na transformação financeira para prestadores de serviço.
           </Heading>
@@ -25,6 +33,15 @@ export default function AdvantagesSection() {
               >
                 <Heading
                   color="blue"
+                  className='hidden lg:block'
+                >
+                  {advantage.advantageValue}
+                </Heading>
+
+                <Heading
+                  color="blue"
+                  className='lg:hidden block'
+                  size={2}
                 >
                   {advantage.advantageValue}
                 </Heading>

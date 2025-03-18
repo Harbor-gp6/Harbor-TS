@@ -21,6 +21,14 @@ export function FaqSection() {
                 <Heading
                     color='blueEnd'
                     size={2}
+                    className='hidden lg:block'
+                >
+                    Dúvidas Frequentes:
+                </Heading>
+                <Heading
+                    color='blueEnd'
+                    size={3}
+                    className='lg:hidden block'
                 >
                     Dúvidas Frequentes:
                 </Heading>
