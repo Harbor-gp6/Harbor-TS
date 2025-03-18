@@ -1,6 +1,7 @@
 'use client'
 
-import { Accordion } from "flowbite-react";
+import { Typography } from '@/components/Typography/Typography'
+import { Accordion } from "flowbite-react"
 
 type FaqAccordionProps = {
     pergunta: string
@@ -12,11 +13,23 @@ export function FaqAccordion({ pergunta, resposta }: FaqAccordionProps) {
         <>
             <Accordion collapseAll>
                 <Accordion.Panel>
-                    <Accordion.Title className="text-black">
-                        <p>{pergunta}</p>
+                    <Accordion.Title>
+                        <Typography
+                            color='blueEnd'
+                            textSize='lg'
+                        >
+                            {pergunta}
+                        </Typography>
                     </Accordion.Title>
-                    <Accordion.Content className="text-gray-600">
-                        <p>{resposta}</p>
+                    <Accordion.Content>
+                        <Typography
+                            color='body'
+                            textSize='base'
+                            textPosition='left'
+                            fullWidth
+                        >
+                            {resposta}
+                        </Typography>
                     </Accordion.Content>
                 </Accordion.Panel>
             </Accordion>

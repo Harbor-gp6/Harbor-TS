@@ -35,7 +35,7 @@ export default function AdvantageCard({ leftImageSrc, rightImageSrc, title, desc
 
         <div className='flex items-center w-full justify-center p-2 border-2 border-gray-300 rounded-xl'>
           <Typography
-            color="black"
+            color="body"
             textPosition="left"
             textSize="base"
           >

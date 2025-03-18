@@ -14,7 +14,7 @@ export function OrbitalSection() {
             maxWidth="sm"
         >
             <Heading
-                color="black"
+                color="blueEnd"
                 size={4}
             >
                 O que você terá sendo nosso cliente:
@@ -44,7 +44,7 @@ export function OrbitalSection() {
                 <AdvantageCard
                     leftImageSrc={calendarIcon}
                     title="Agenda"
-                    description="Manntenha o controle do tempo com a agenda inteligente que sicroniza compromissos entre colaboradores e clientes."
+                    description="Mantenha o controle do tempo com a agenda inteligente que sicroniza compromissos entre colaboradores e clientes."
                 />
             </div>
         </Container>

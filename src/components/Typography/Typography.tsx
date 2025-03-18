@@ -11,6 +11,7 @@ type TypographyProps = {
   textPosition?: TypographyPosition
   textSize?: TypographySize
   className?: ClassValue | ClassArray
+  fullWidth?: boolean
 }
 
 const defaultColor: TypographyColors = 'white'
@@ -18,7 +19,7 @@ const defaultSize: TypographySize = 'xl'
 const defaultPosition: TypographyPosition = 'center'
 
 
-export function Typography({ children, color = defaultColor, textPosition = defaultPosition, textSize = defaultSize, className }:TypographyProps) {
+export function Typography({ children, color = defaultColor, textPosition = defaultPosition, textSize = defaultSize, className, fullWidth = false }:TypographyProps) {
   const style = clsx (
     `text-${textSize}`,
     textSize  === 'base' && 'text-base',
@@ -34,8 +35,7 @@ export function Typography({ children, color = defaultColor, textPosition = defa
     textPosition === 'center' && 'text-center',
     textPosition === 'left' && 'text-left',
     textPosition === 'right' && 'text-right',
-    `text-body`,
-    'max-w-screen-md',
+    fullWidth ? 'w-full' : 'max-w-screen-md',
     Array.isArray(className) ? className : [className]
   )
   return (

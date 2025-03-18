@@ -29,7 +29,7 @@ export default function Header() {
               variant='outlined'
               color='white'
               textColor='white'
-              className='hover:bg-white hover:text-blue transition duration-75 ease-in-out'
+              className='hover:bg-white hover:text-blue transition duration-75 ease-in-out text-sm md:text-base'
             >
               Login
             </Button>
@@ -38,7 +38,7 @@ export default function Header() {
               color='white'
               href='/cadastrar'
               textColor='blue'
-              className='hover:shadow-md hover:shadow-white transition delay-100 duration-75 ease-in-out'
+              className='hover:shadow-md hover:shadow-white transition delay-100 duration-75 ease-in-out text-sm md:text-base whitespace-nowrap'
             >
               Cadastre-se
             </Button>

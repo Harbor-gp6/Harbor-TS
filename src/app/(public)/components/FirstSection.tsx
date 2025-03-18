@@ -12,7 +12,7 @@ export default function FirstSection() {
           Em um oceano de desafios financeiros, navegue com segurança: <br /> Harbor, a sua rota para o sucesso.
         </Heading>
 
-        <Heading size={3} className="block lg:hidden px-5">
+        <Heading size={3} className="block lg:hidden text-center px-5">
           Em um oceano de desafios financeiros, navegue com segurança: <br /> Harbor, a sua rota para o sucesso.
         </Heading>
 
