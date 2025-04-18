@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 export function Footer() {
   return (
-    <div className='w-screen h-fit bg-white justify-center flex flex-col border-t border-blue lg:flex-row p-6 mt-10 lg:mt-0'>
+    <div className='h-fit bg-white justify-center flex flex-col border-t border-blue lg:flex-row p-6 mt-10 lg:mt-0'>
       <Container className="flex flex-col lg:flex-row mx-auto" maxWidth="xl">
         <div className='flex flex-col lg:flex-row w-full justify-between items-center'>
           <div className='h-full flex'>

@@ -8,7 +8,7 @@ type PublicPageLayoutProps = {
 
 export default function PublicPageLayout ({ children }: PublicPageLayoutProps) {
   return (
-    <div className='flex flex-col w-full bg-white'>
+    <div className='flex flex-col overflow-y-hidden bg-white'>
       <Header />
         {children}
       <Footer />

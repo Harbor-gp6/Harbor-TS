@@ -2,13 +2,11 @@ import clsx, { ClassArray, ClassValue } from 'clsx'
 import React, { ReactNode } from 'react'
 
 type HeadingSizes = 1 | 2 | 3 | 4 | 5 | 6
-type HeadingComponent = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 
 
 type HeadingProps = {
-  component?: HeadingComponent
   size?: HeadingSizes
-  color?: string
+  color?: 'primary' | 'secondary' | 'white' | 'blue' | 'blueEnd'
   noGutters?: boolean
   children?: ReactNode
   className?: ClassValue | ClassArray
@@ -19,39 +17,34 @@ export function Heading({
   color = 'white',
   noGutters,
   children,
-  className,
-  component
-}: HeadingProps ) {
+  className
+}: HeadingProps) {
 
-  const element = component || `h${size}`
-
+  const styles = clsx(
+    'font-semibold',
+    'font-sans',
+    'max-w-screen-lg',
+    [color === 'primary' && 'text-primary'],
+    [color === 'secondary' && 'text-secondary'],
+    [color === 'white' && 'text-white'],
+    [color === 'blue' && 'text-blue'],
+    [color === 'blueEnd' && 'text-blueEnd'],
+    !noGutters && 'pb-4',
+    {
+      'text-6xl': size === 1,
+      'text-5xl': size === 2,
+      'text-4xl': size === 3,
+      'text-3xl': size === 4,
+      'text-2xl': size === 5,
+      'text-xl': size === 6
+    },
+    ...(Array.isArray(className) ? className : [className])
+  )
 
 
   return (
-    React.createElement(
-      element,
-      {
-        className: clsx(
-          'font-semibold',
-          'font-sans',
-          'max-w-screen-lg',
-          `text-${color}`,
-          [color === 'primary' && 'text-primary'],
-          [color === 'secondary' && 'text-secondary'],
-          [color === 'white' && 'text-white'],
-          !noGutters && 'pb-4',
-          {
-            'text-6xl': size === 1,
-            'text-5xl': size === 2,
-            'text-4xl': size === 3,
-            'text-3xl': size === 4,
-            'text-2xl': size === 5,
-            'text-xl': size === 6
-          },
-          ...(Array.isArray(className) ? className : [className])
-        )
-      },
-      children
-    )
+    <p className={styles}>
+      {children}
+    </p>
   )
 }
