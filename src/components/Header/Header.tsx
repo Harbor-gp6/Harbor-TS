@@ -5,7 +5,7 @@ import { Button } from '../Button'
 
 export default function Header() {
   return (
-    <div className="flex w-screen lg:justify-between h-24 bg-blue lg:px-20">
+    <div className="flex lg:justify-between h-24 bg-blue lg:px-20">
       <Container
         maxWidth="xl"
         className='mx-auto'

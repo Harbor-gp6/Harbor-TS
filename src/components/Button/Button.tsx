@@ -1,7 +1,6 @@
 import { ReactNode } from 'react'
 import clsx, { ClassArray, ClassValue } from 'clsx'
 import Link from 'next/link'
-import { blue } from 'tailwindcss/colors'
 
 type ButtonProps = {
   children?: ReactNode
@@ -15,8 +14,8 @@ type ButtonProps = {
   target?: '_blank' | '_self' | '_parent' | '_top'
   rel?: 'noopener' | 'noreferrer' | 'noopener noreferrer'
   fullWidth?: boolean
-  color?: string
-  textColor?: string
+  color?: 'white' | 'blue' | 'blueEnd' | 'body' | 'transparent'
+  textColor?: 'white' | 'blue' | 'blueEnd' | 'body'
   rounded?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | 'full' | 'none'
 }
 
@@ -33,7 +32,7 @@ export function Button(props: ButtonProps) {
     target,
     rel,
     color = 'white',
-    textColor,
+    textColor = 'white',
     rounded = 'full'
   } = props
 
@@ -45,9 +44,21 @@ export function Button(props: ButtonProps) {
     'px-4',
     'py-2',
     rounded && `rounded-${rounded}`,
-    [variant === 'outlined' && `border border-2 bg-transparent border-${color} text-${textColor ? textColor : color}`],
-    [variant === 'contained' && `bg-${color} text-${textColor ? textColor : 'white'}`],
-    [variant === 'text' && `text-${color ? color : textColor} border-none`],
+    [variant === 'outlined' && color === 'white' && 'border border-2 bg-transparent border-white'],
+    [variant === 'outlined' && color === 'blue' && 'border border-2 bg-transparent border-blue'],
+    [variant === 'outlined' && color === 'blueEnd' && 'border border-2 bg-transparent border-blueEnd'],
+    [variant === 'outlined' && color === 'body' && 'border border-2 bg-transparent border-body'],
+    [variant === 'outlined' && color === 'transparent' && 'border border-2 bg-transparent border-transparent'],
+    [variant === 'contained' && color === 'white' && 'bg-white'],
+    [variant === 'contained' && color === 'blue' && 'bg-blue'],
+    [variant === 'contained' && color === 'blueEnd' && 'bg-blueEnd'],
+    [variant === 'contained' && color === 'body' && 'bg-body'],
+    [variant === 'contained' && color === 'transparent' && 'bg-transparent'],
+    [variant === 'text' && `border-none`],
+    [textColor === 'blue' && 'text-blue'],
+    [textColor === 'blueEnd' && 'text-blueEnd'],
+    [textColor === 'white' && 'text-white'],
+    [textColor === 'body' && 'text-body'],
     Array.isArray(className) ? className : [className]
   )
 

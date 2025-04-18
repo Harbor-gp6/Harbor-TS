@@ -6,13 +6,19 @@ import Wave from 'react-wavify'
 
 export default function FirstSection() {
   return (
-    <div className='flex w-screen bg-gradient-to-b from-blue to-blueEnd pt-10 lg:pt-24'>
+    <div className='flex bg-gradient-to-b from-blue to-blueEnd pt-10 lg:pt-24'>
       <div className='flex flex-col gap-10 items-center w-full justify-center z-10'>
-        <Heading className="hidden lg:block text-center">
-          Em um oceano de desafios financeiros, navegue com segurança: <br /> Harbor, a sua rota para o sucesso.
-        </Heading>
+        <div className="hidden lg:flex lg:flex-col gap-2">
+          <Heading noGutters className="text-center">
+            Em um oceano de desafios financeiros, navegue com segurança:
+          </Heading>
 
-        <Heading size={3} className="block lg:hidden text-center px-5">
+          <Heading noGutters className="text-center">
+            Harbor, a sua rota para o sucesso.
+          </Heading>
+        </div>
+
+        <Heading size={3} className="flex lg:hidden text-center px-5">
           Em um oceano de desafios financeiros, navegue com segurança: <br /> Harbor, a sua rota para o sucesso.
         </Heading>
 
